@@ -1,0 +1,19 @@
+{# TODO: Refactor classes into BEM #}
+<section class="panel-hero" data-panel-hero="">
+    <div class="video-bg">
+        <div id="videoPlayerHero"></div>
+        <div class="mobile-image">
+            {# TODO: Use picture element #}
+            <img src="{{ heroPanel.mobileImage }}" alt="" />
+        </div>
+    </div>
+
+    <div class="content-overlay">
+        <h1 class="hero1">{{ heroPanel.headline }}</h1>
+        <a class="cta" href="">{{ heroPanel.cta }}</a>
+        <p>
+            <span class="icon-pin"></span>
+            {{ heroPanel.location }}
+        </p>
+    </div>
+</section>
