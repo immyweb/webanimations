@@ -1,8 +1,7 @@
 import data from '../../../data/data.json';
 import enquire from 'enquire.js';
-import { TweenMax } from 'gsap';
 import YouTubePlayer from 'youtube-player';
-import ScrollMagic from 'scrollmagic';
+import { TweenMax, TimelineLite } from 'gsap';
 
 export default class PanelHero {
 
@@ -18,9 +17,8 @@ export default class PanelHero {
         this.data = data;
         this.videoEl = this.panel.find('#videoPlayerHero')[0].id;
 
-        console.log(data);
-
         this.checkBreakpoint();
+        this.animateContent();
     }
 
     checkBreakpoint() {
@@ -57,6 +55,23 @@ export default class PanelHero {
         if (this.player) {
             this.player.stopVideo();
             this.player.destroy();
+        }
+    }
+
+    animateContent() {
+        const panelHeading = this.panel.find('.hero-panel__h1');
+        const panelCta = this.panel.find('.hero-panel__cta');
+        const panelLabel = this.panel.find('.hero-panel__p');
+
+        const animation = new TimelineLite();
+
+        TweenMax.delayedCall(1.75, startAnim);
+
+        function startAnim() {
+            animation
+                .to(panelHeading, 0.5, { right: 0, ease: Power1.easeOut })
+                .to(panelCta, 0.5, { right: 0, ease: Power1.easeOut })
+                .to(panelLabel, 0.25, { left: 0, ease: Power1.easeOut });
         }
     }
 

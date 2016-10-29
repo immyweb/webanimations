@@ -3,7 +3,7 @@
     // @include container;
     position: relative;
 
-    .panel-image {
+    &__image {
         width: 100%;
         position: relative;
         min-height: 330px;
@@ -21,7 +21,7 @@
         }
     }
 
-    .panel-shard {
+    &__shard {
         background: $global2;
         position: absolute;
         width: 40%;
@@ -32,7 +32,7 @@
             display: none;
         }
 
-        &::after {
+        &:after {
             background: $global2;
             content: "";
             position: absolute;
@@ -47,7 +47,7 @@
         }
     }
 
-    .panel-tyre {
+    &__tyre {
         position: absolute;
         left: 0;
         right: 0;
@@ -70,7 +70,7 @@
         }
     }
 
-    .panel-bkgnd {
+    &__bkgnd {
         width: 65%;
         min-height: 305px;
         float: right;
@@ -85,7 +85,7 @@
         }
     }
 
-    .panel-content {
+    &__content {
         width: 100%;
         padding: 30px 28px;
         background: $global1;
@@ -110,7 +110,7 @@
             padding: 1px;
             background-clip: content-box;
 
-            &::after {
+            &:after {
                 content: "";
                 position: absolute;
                 width: 160px;
@@ -128,50 +128,50 @@
                 background-clip: content-box;
             }
         }
+    }
 
-        .inner {
+    &__inner {
 
-            @media #{$screen-medium} {
-                transform: rotate(5deg);
-                transform-origin: top left;
-                padding-top: 60px;
-                position: relative;
-                left: 55px;
-                // @include span(6 of 9);
-                width: 66.6%;
-                // margin-left: span(1 wide of 9);
-                margin-left: 11.1%;
-                margin-right: 0;
-            }
-        }
-
-        h3 {
-            margin-top: 0;
-            @extend .heading3;
-        }
-
-        h1 {
-            margin-top: 0;
-            @extend .heading1;
-
-            @media #{$screen-medium} {
-                margin-bottom: 20px;
-            }
-        }
-
-        p {
-            line-height: 1.8;
-            margin-bottom: 25px;
+        @media #{$screen-medium} {
+            transform: rotate(5deg);
+            transform-origin: top left;
+            padding-top: 60px;
+            position: relative;
+            left: 55px;
+            // @include span(6 of 9);
+            width: 66.6%;
+            // margin-left: span(1 wide of 9);
+            margin-left: 11.1%;
+            margin-right: 0;
         }
     }
 
-    .cta-container {
+    &__h3 {
+        margin-top: 0;
+        @extend .heading3;
+    }
+
+    &__h1 {
+        margin-top: 0;
+        @extend .heading1;
+
+        @media #{$screen-medium} {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__p {
+        line-height: 1.8;
+        margin-bottom: 25px;
+    }
+
+    &__cta-container {
         // @include clearfix;
         text-align: left;
     }
 
-    .panel-cta,
-    .panel-cta2 {
+    &__cta,
+    &__cta2 {
         margin-bottom: 15px;
         width: 100%;
         @extend .cta-primary;
@@ -183,7 +183,7 @@
         }
     }
 
-    .panel-cta2 {
+    &__cta2 {
         @extend .cta-secondary;
 
         @media #{$screen-medium} {
