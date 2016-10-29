@@ -13,5 +13,11 @@
         "subheading": "Off the road racing championship",
         "locationIcon": "/images/video-panel/42_track.svg",
         "videoDescription": "KAKADU NATIONAL PARK, NORTHERN TERRITORY, AUSTRALIA"
+    },
+    "messagePanel": {
+        "videoId": "acPVJksu9aE",
+        "mobileImage": "/images/message-panel/message-card-bkgnd-mobile.png",
+        "headline": "Cornering precision you thought you would never feel",
+        "subheading": "Someone, at some point"
     }
 }

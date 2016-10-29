@@ -1,18 +1,18 @@
 import $ from 'jquery';
-import GlobalFooter from './globalFooter';
+import PanelMessage from './panelMessage';
 
 module.exports = {
 
     init: function(){
 
-        let $globalFooter = $('[data-global-footer]');
-        let globalFooter;
+        let $panelMessage = $('[data-panel-message]');
+        let panelMessage;
 
-        if ( $globalFooter && $globalFooter.length ) {
+        if ( $panelMessage && $panelMessage.length ) {
 
-            $globalFooter.each(function(index, element){
-                globalFooter = new GlobalFooter();
-    			globalFooter.init( $globalFooter );
+            $panelMessage.each(function(index, element){
+                panelMessage = new PanelMessage();
+    			panelMessage.init( $panelMessage );
             });
         }
     }
