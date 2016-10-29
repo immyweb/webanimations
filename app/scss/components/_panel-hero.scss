@@ -1,7 +1,7 @@
 .hero-panel {
     position: relative;
     // @include container;
-    // @include clearfix;
+    @include clearfix;
     min-height: 500px;
 
     @media #{$screen-medium} {

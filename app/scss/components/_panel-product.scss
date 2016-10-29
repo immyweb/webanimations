@@ -1,5 +1,5 @@
 .product-panel {
-    // @include clearfix;
+    @include clearfix;
     // @include container;
     position: relative;
 
@@ -166,7 +166,7 @@
     }
 
     &__cta-container {
-        // @include clearfix;
+        @include clearfix;
         text-align: left;
     }
 
