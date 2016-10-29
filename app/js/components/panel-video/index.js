@@ -1,18 +1,18 @@
 import $ from 'jquery';
-import GlobalFooter from './globalFooter';
+import PanelVideo from './panelVideo';
 
 module.exports = {
 
     init: function(){
 
-        let $globalFooter = $('[data-global-footer]');
-        let globalFooter;
+        let $panelVideo = $('[data-panel-video]');
+        let panelVideo;
 
-        if ( $globalFooter && $globalFooter.length ) {
+        if ( $panelVideo && $panelVideo.length ) {
 
-            $globalFooter.each(function(index, element){
-                globalFooter = new GlobalFooter();
-    			globalFooter.init( $globalFooter );
+            $panelVideo.each(function(index, element){
+                panelVideo = new PanelVideo();
+    			panelVideo.init( $panelVideo );
             });
         }
     }

@@ -5,5 +5,13 @@
         "headline": "Are you Driver Enough?",
         "cta": "Take a drive",
         "location": "KAKADU NATIONAL PARK, NORTHERN TERRITORY, AUSTRALIA"
+    },
+    "videoPanel": {
+        "videoId": "g1Tb_wX8YLM",
+        "playText": "Play Video",
+        "headline": "Toby Price takes on the Challenge",
+        "subheading": "Off the road racing championship",
+        "locationIcon": "/images/video-panel/42_track.svg",
+        "videoDescription": "KAKADU NATIONAL PARK, NORTHERN TERRITORY, AUSTRALIA"
     }
 }

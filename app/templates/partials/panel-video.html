@@ -1,0 +1,25 @@
+<section class="video-panel" data-panel-video="">
+
+    <div class="video-panel__video-bg">
+        <div id="videoPlayerVideo" class="video-panel__videoplayer"></div>
+    </div>
+
+    <div class="video-panel__content">
+        <div class="video-panel__cta-container">
+            <a href="#" class="video-panel__cta">
+                <span class="icon icon-play"></span>
+                <span class="text">{{ videoPanel.playText }}</span>
+            </a>
+        </div>
+
+        <div class="video-panel__overlay">
+            <h1 class="video-panel__h1">{{ videoPanel.headline }}</h1>
+            <h2 class="video-panel__h2">{{ videoPanel.subheading }}</h2>
+            <div class="video-panel__location">
+                <img src="{{ videoPanel.locationIcon }}" width="29" height="63" alt="" />
+                <p>{{ videoPanel.videoDescription }}</p>
+            </div>
+        </div>
+    </div>
+
+</section>
