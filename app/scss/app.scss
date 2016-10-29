@@ -5,13 +5,13 @@
 @import 'base/typography';
 
 // Layout
-@import 'layout/globalHeader';
-@import 'layout/globalfooter';
+@import 'layout/global-header';
+@import 'layout/global-footer';
 
 // Components
-@import 'components/panelarticle';
-@import 'components/panelfeatures';
-@import 'components/panelhero';
-@import 'components/panelmessage';
-@import 'components/panelproduct';
-@import 'components/panelvideo';
+@import 'components/panel-article';
+@import 'components/panel-features';
+@import 'components/panel-hero';
+@import 'components/panel-message';
+@import 'components/panel-product';
+@import 'components/panel-video';
