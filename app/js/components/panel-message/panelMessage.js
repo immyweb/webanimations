@@ -69,11 +69,11 @@ export default class PanelMessage {
         const controller = new ScrollMagic.Controller();
 
         const scene = new ScrollMagic.Scene({
-            triggerElement: this.panel[0],
-            reverse: false
-        })
-        .setTween(this.messageContent, 1, { opacity: 1, top: 0 })
-        .addTo(controller);
+                triggerElement: this.panel[0],
+                reverse: false
+            })
+            .setTween(this.messageContent, 1, { opacity: 1, top: 0 })
+            .addTo(controller);
     }
 
 }

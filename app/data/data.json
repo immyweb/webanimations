@@ -6,6 +6,17 @@
         "cta": "Take a drive",
         "location": "KAKADU NATIONAL PARK, NORTHERN TERRITORY, AUSTRALIA"
     },
+    "productPanel": {
+        "tyreImage": "/images/product-panel/example_product-shot_isolated.png",
+        "bkgndImage": "/images/product-panel/bg-image.png",
+        "subheading": "Sub-title",
+        "headline": "Tyre model name",
+        "copy": "Lorem ipsum sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "cta1": "Find me a dealer",
+        "cta1Url": "#",
+        "cta2": "More information",
+        "cta2Url": "#"
+    },
     "videoPanel": {
         "videoId": "g1Tb_wX8YLM",
         "playText": "Play Video",

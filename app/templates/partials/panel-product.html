@@ -3,20 +3,24 @@
     <div class="product-panel__image">
         <div class="product-panel__shard"></div>
 
-        <div class="product-panel__tyre" style="background-image: url('/images/product-panel/example_product-shot_isolated.png');"></div>
+        <div class="product-panel__tyre" style="background-image: url('{{ productPanel.tyreImage }}');"></div>
 
-        <div class="product-panel__bkgnd" style="background-image: url('/images/product-panel/bg-image.png');"></div>
+        <div class="product-panel__bkgnd" style="background-image: url('{{ productPanel.bkgndImage }}');"></div>
     </div>
 
     <div class="product-panel__content">
         <div class="product-panel__inner">
-            <h3 class="product-panel__h3">Sub-title</h3>
-            <h1 class="product-panel__h1">Tyre model name</h1>
-            <p class="product-panel__p">Lorem ipsum sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <h3 class="product-panel__h3">{{ productPanel.subheading }}</h3>
+            <h1 class="product-panel__h1">{{ productPanel.headline }}</h1>
+            <p class="product-panel__p">{{ productPanel.copy }}</p>
 
             <div class="product-panel__cta-container">
-                <a href="#" class="product-panel__cta">Find me a dealer</a>
-                <a href="#" class="product-panel__cta2">More information</a>
+                <a href="{{ productPanel.cta1Url }}" class="product-panel__cta">
+                    {{ productPanel.cta1 }}
+                </a>
+                <a href="{{ productPanel.cta2Url }}" class="product-panel__cta2">
+                    {{ productPanel.cta2 }}
+                </a>
             </div>
         </div>
     </div>
