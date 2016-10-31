@@ -6,4 +6,4 @@ app/js/dist/*.js
 app/js/dist/*.js.map
 app/css
 
-app/index.html
+app/*.html

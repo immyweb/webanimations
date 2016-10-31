@@ -1,0 +1,22 @@
+.pp_index {
+    color: #fff;
+
+    h1 {
+        display: block;
+        width: 100%;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    a {
+        color: #ccc;
+        text-decoration: none;
+    }
+
+    &__col {
+        width: 33.3%;
+    }
+}
