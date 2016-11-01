@@ -1,19 +1,19 @@
-var gulp              = require('gulp');
-var gutil             = require('gulp-util');
-var source            = require('vinyl-source-stream');
-var babelify          = require('babelify');
-var watchify          = require('watchify');
-var exorcist          = require('exorcist');
-var browserify        = require('browserify');
-var browserSync       = require('browser-sync').create();
-var sass              = require('gulp-sass');
-var sourcemaps        = require('gulp-sourcemaps');
-var autoprefixer      = require('gulp-autoprefixer');
-var nunjucksRender    = require('gulp-nunjucks-render');
-var data              = require('gulp-data');
-var iconfont          = require('gulp-iconfont');
-var iconfontCSS       = require('gulp-iconfont-css');
-var imagemin          = require('gulp-imagemin');
+const gulp              = require('gulp');
+const gutil             = require('gulp-util');
+const source            = require('vinyl-source-stream');
+const babelify          = require('babelify');
+const watchify          = require('watchify');
+const exorcist          = require('exorcist');
+const browserify        = require('browserify');
+const browserSync       = require('browser-sync').create();
+const sass              = require('gulp-sass');
+const sourcemaps        = require('gulp-sourcemaps');
+const autoprefixer      = require('gulp-autoprefixer');
+const nunjucksRender    = require('gulp-nunjucks-render');
+const data              = require('gulp-data');
+const iconfont          = require('gulp-iconfont');
+const iconfontCSS       = require('gulp-iconfont-css');
+const imagemin          = require('gulp-imagemin');
 
 // Icon fonts
 const fontName = 'icons';
@@ -47,7 +47,7 @@ const bundler = watchify(browserify('./app/js/app.js', watchify.args));
 // Babel transform
 bundler.transform(babelify.configure({
     sourceMapRelative: 'app/js',
-    presets: ["es2015"]
+    presets: ['es2015']
 }));
 
 // On updates recompile
@@ -60,8 +60,8 @@ function bundle() {
     return bundler.bundle()
         .on('error', (err) => {
             gutil.log(err.message);
-            browserSync.notify("Browserify Error!");
-            this.emit("end");
+            browserSync.notify('Browserify Error!');
+            this.emit('end');
         })
         .pipe(exorcist('app/js/dist/bundle.js.map'))
         .pipe(source('bundle.js'))
@@ -77,13 +77,13 @@ gulp.task('bundle', () => {
 gulp.task('serve', ['sass', 'bundle', 'nunjucks'], () => {
 
     browserSync.init({
-        server: "./app"
+        server: './app'
     });
 
-    gulp.watch("app/templates/**/*.+(html|nunjucks)", ['nunjucks']);
-    gulp.watch("app/data/*.json", ['nunjucks']);
-    gulp.watch("app/scss/**/*.scss", ['sass']);
-    gulp.watch("app/*.html").on('change', browserSync.reload);
+    gulp.watch('app/templates/**/*.+(html|nunjucks)', ['nunjucks']);
+    gulp.watch('app/data/*.json', ['nunjucks']);
+    gulp.watch('app/scss/**/*.scss', ['sass']);
+    gulp.watch('app/*.html').on('change', browserSync.reload);
 });
 
 // Sass configuration options
@@ -99,12 +99,12 @@ const autoprefixerOptions = {
 
 // Compile sass into CSS & auto-inject into browsers
 gulp.task('sass', () => {
-    return gulp.src("app/scss/*.scss")
+    return gulp.src('app/scss/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass(sassOptions).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(autoprefixer(autoprefixerOptions))
-        .pipe(gulp.dest("app/css"))
+        .pipe(gulp.dest('app/css'))
         .pipe(browserSync.stream());
 });
 
