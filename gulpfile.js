@@ -1,23 +1,48 @@
-var gulp        = require('gulp');
-var gutil       = require('gulp-util');
-var source      = require('vinyl-source-stream');
-var babelify    = require('babelify');
-var watchify    = require('watchify');
-var exorcist    = require('exorcist');
-var browserify  = require('browserify');
-var browserSync = require('browser-sync').create();
-var sass        = require('gulp-sass');
-var sourcemaps  = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var nunjucksRender = require('gulp-nunjucks-render');
-var data        = require('gulp-data');
+var gulp              = require('gulp');
+var gutil             = require('gulp-util');
+var source            = require('vinyl-source-stream');
+var babelify          = require('babelify');
+var watchify          = require('watchify');
+var exorcist          = require('exorcist');
+var browserify        = require('browserify');
+var browserSync       = require('browser-sync').create();
+var sass              = require('gulp-sass');
+var sourcemaps        = require('gulp-sourcemaps');
+var autoprefixer      = require('gulp-autoprefixer');
+var nunjucksRender    = require('gulp-nunjucks-render');
+var data              = require('gulp-data');
+var iconfont          = require('gulp-iconfont');
+var iconfontCSS       = require('gulp-iconfont-css');
+var imagemin          = require('gulp-imagemin');
 
+// Icon fonts
+const fontName = 'icons';
+const runTimestamp = Math.round(Date.now()/1000);
+
+gulp.task('iconfont', () => {
+    gulp.src(['app/svg/*.svg'])
+        .pipe(iconfontCSS({
+            fontName: fontName,
+            targetPath: '../scss/base/_icons.scss',
+            fontPath: '../fonts/'
+        }))
+        .pipe(iconfont({
+            fontName: fontName,
+            prependUnicode: true,
+            // Remove woff2 if you get an ext error on compile
+            formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
+            normalize: true,
+            fontHeight: 1001,
+            timestamp: runTimestamp
+        }))
+        .pipe(gulp.dest('app/fonts'))
+});
 
 // Watchify args contains necessary cache options to achieve fast incremental bundles.
 // See watchify readme for details. Adding debug true for source-map generation.
 watchify.args.debug = true;
 // Input file.
-var bundler = watchify(browserify('./app/js/app.js', watchify.args));
+const bundler = watchify(browserify('./app/js/app.js', watchify.args));
 
 // Babel transform
 bundler.transform(babelify.configure({
@@ -33,7 +58,7 @@ function bundle() {
     gutil.log('Compiling JS...');
 
     return bundler.bundle()
-        .on('error', function (err) {
+        .on('error', (err) => {
             gutil.log(err.message);
             browserSync.notify("Browserify Error!");
             this.emit("end");
@@ -44,12 +69,12 @@ function bundle() {
         .pipe(browserSync.stream({once: true}));
 }
 
-gulp.task('bundle', function () {
+gulp.task('bundle', () => {
     return bundle();
 });
 
 // Static Server + watching scss/js/html files
-gulp.task('serve', ['sass', 'bundle', 'nunjucks'], function() {
+gulp.task('serve', ['sass', 'bundle', 'nunjucks'], () => {
 
     browserSync.init({
         server: "./app"
@@ -62,18 +87,18 @@ gulp.task('serve', ['sass', 'bundle', 'nunjucks'], function() {
 });
 
 // Sass configuration options
-var sassOptions = {
+const sassOptions = {
     errLogToConsole: true,
     outputStyle: 'expanded'
 };
 
 // Auto-prefixer options
-var autoprefixerOptions = {
+const autoprefixerOptions = {
     browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 };
 
 // Compile sass into CSS & auto-inject into browsers
-gulp.task('sass', function() {
+gulp.task('sass', () => {
     return gulp.src("app/scss/*.scss")
         .pipe(sourcemaps.init())
         .pipe(sass(sassOptions).on('error', sass.logError))
@@ -84,10 +109,10 @@ gulp.task('sass', function() {
 });
 
 // nunjucks templating
-gulp.task('nunjucks', function() {
+gulp.task('nunjucks', () => {
     // Gets .html and .nunjucks files in pages
     return gulp.src('app/pages/**/*.+(html|nunjucks)')
-        .pipe(data(function() {
+        .pipe(data(() => {
             return require('./app/data/data.json')
         }))
         // Renders template with nunjucks
@@ -100,3 +125,4 @@ gulp.task('nunjucks', function() {
 
 
 gulp.task('default', ['serve']);
+gulp.task('icons', ['iconfont', 'sass']);
