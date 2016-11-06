@@ -44,6 +44,8 @@
     "enquire.js": "^2.1.1",
     "gsap": "^1.19.0",
     "jquery": "^3.1.1",
+    "p5": "^0.5.4",
+    "scriptjs": "^2.5.8",
     "scrollmagic": "^2.0.5",
     "youtube-player": "^3.0.4"
   }

@@ -1,19 +1,16 @@
 import $ from 'jquery';
-import P5 from './p5';
+import P5 from 'p5';
+import sketch from './p5';
 
 export default {
 
     init: () => {
 
         let $p5 = $('#p5stage');
-        let p5;
+        let p5el = $p5[0].id;
 
-        if ( $p5 && $p5.length ) {
-
-            $p5.each((index, element) => {
-                p5 = new P5();
-    			p5.init( $(element) );
-            });
+        if ( $p5 ) {
+            new P5(sketch, p5el);
         }
     }
 };

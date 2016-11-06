@@ -1,11 +1,8 @@
+let s = ( sketch ) => {
 
-export default class P5 {
+    sketch.setup = () => {
+        sketch.createCanvas(700, 410);
+    };
+};
 
-    constructor() {
-    }
-
-    init(element) {
-        console.log(element);
-    }
-
-}
+export default s;

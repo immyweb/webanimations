@@ -1,3 +1,4 @@
+import $script from 'scriptjs';
 
 export default class Pixi {
 
@@ -5,6 +6,15 @@ export default class Pixi {
     }
 
     init(element) {
+
+        this.canvas = document.getElementById(element[0].id);
+
+        $script('https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.1.1/pixi.min.js', () => {
+            this.initCanvas();
+        });
+    }
+
+    initCanvas() {
         // 1. Create a Pixi renderer and define size and a background color
         this.renderer = PIXI.autoDetectRenderer(400, 400, {
             transparent: true,
@@ -13,7 +23,6 @@ export default class Pixi {
         });
 
         // 2. Append canvas element to the body
-        this.canvas = document.getElementById(element[0].id);
         this.canvas.appendChild(this.renderer.view);
 
         // 3. Create a container that will hold your scene
