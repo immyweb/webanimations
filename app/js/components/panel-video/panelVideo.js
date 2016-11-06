@@ -5,14 +5,11 @@ import { TweenMax } from 'gsap';
 export default class PanelVideo {
 
     constructor() {
-        this.panel;
-        this.player;
-        this.data;
+        this.data = data;
     }
 
     init(element) {
         this.panel = element;
-        this.data = data;
         this.videoEl = this.panel.find('#videoPlayerVideo')[0].id;
         this.videoContent = this.panel.find('.video-panel__content');
         this.videoCta = this.panel.find('.video-panel__cta');

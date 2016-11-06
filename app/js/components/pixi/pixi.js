@@ -2,9 +2,6 @@
 export default class Pixi {
 
     constructor() {
-        this.renderer;
-        this.canvas;
-        this.stage;
     }
 
     init(element) {

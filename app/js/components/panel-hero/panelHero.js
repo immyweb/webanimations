@@ -6,15 +6,11 @@ import { TweenMax, TimelineLite } from 'gsap';
 export default class PanelHero {
 
     constructor() {
-        this.panel;
-        this.player;
-        this.data;
+        this.data = data;
     }
 
     init(element) {
-
         this.panel = element;
-        this.data = data;
         this.videoEl = this.panel.find('#videoPlayerHero')[0].id;
 
         this.checkBreakpoint();

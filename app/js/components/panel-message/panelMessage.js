@@ -1,21 +1,17 @@
 import data from '../../../data/data.json';
 import YouTubePlayer from 'youtube-player';
 import enquire from 'enquire.js';
-import { TweenMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 export default class PanelMessage {
 
     constructor() {
-        this.panel;
-        this.player;
-        this.data;
+        this.data = data;
     }
 
     init(element) {
         this.panel = element;
-        this.data = data;
         this.videoEl = this.panel.find('#videoMessage')[0].id;
         this.messageContent = this.panel.find('.message-panel__content');
 
@@ -72,8 +68,9 @@ export default class PanelMessage {
                 triggerElement: this.panel[0],
                 reverse: false
             })
-            .setTween(this.messageContent, 1, { opacity: 1, top: 0 })
-            .addTo(controller);
+            .setTween(this.messageContent, 1, { opacity: 1, top: 0 });
+
+        controller.addScene(scene);
     }
 
 }
