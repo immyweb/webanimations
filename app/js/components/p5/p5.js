@@ -5,7 +5,11 @@ const s = ( sketch ) => {
     };
 
     sketch.draw = () => {
-        sketch.rect(100, 200, 75, 150);
+        sketch.background(51);
+
+        
+
+
     };
 };
 
