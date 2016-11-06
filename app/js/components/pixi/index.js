@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Pixi from './pixi';
 
-module.exports = {
+export default {
 
     init: () => {
 

@@ -1,18 +1,18 @@
 import $ from 'jquery';
 import PanelHero from './panelHero';
 
-module.exports = {
+export default {
 
-    init: function(){
+    init: () => {
 
         let $panelHero = $('[data-panel-hero]');
         let panelHero;
 
         if ( $panelHero && $panelHero.length ) {
 
-            $panelHero.each(function(index, element){
+            $panelHero.each((index, element) => {
                 panelHero = new PanelHero();
-    			panelHero.init( $panelHero );
+    			panelHero.init( $(element) );
             });
         }
     }

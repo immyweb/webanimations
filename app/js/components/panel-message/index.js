@@ -1,18 +1,18 @@
 import $ from 'jquery';
 import PanelMessage from './panelMessage';
 
-module.exports = {
+export default {
 
-    init: function(){
+    init: () => {
 
         let $panelMessage = $('[data-panel-message]');
         let panelMessage;
 
         if ( $panelMessage && $panelMessage.length ) {
 
-            $panelMessage.each(function(index, element){
+            $panelMessage.each((index, element) => {
                 panelMessage = new PanelMessage();
-    			panelMessage.init( $panelMessage );
+    			panelMessage.init( $(element) );
             });
         }
     }

@@ -1,18 +1,18 @@
 import $ from 'jquery';
 import PanelVideo from './panelVideo';
 
-module.exports = {
+export default {
 
-    init: function(){
+    init: () => {
 
         let $panelVideo = $('[data-panel-video]');
         let panelVideo;
 
         if ( $panelVideo && $panelVideo.length ) {
 
-            $panelVideo.each(function(index, element){
+            $panelVideo.each((index, element) => {
                 panelVideo = new PanelVideo();
-    			panelVideo.init( $panelVideo );
+    			panelVideo.init( $(element) );
             });
         }
     }
