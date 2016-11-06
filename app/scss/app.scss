@@ -10,6 +10,7 @@
 // Layout
 @import 'layout/global-header';
 @import 'layout/global-footer';
+@import 'layout/index';
 
 // Components
 @import 'components/panel-article';
@@ -18,6 +19,4 @@
 @import 'components/panel-message';
 @import 'components/panel-product';
 @import 'components/panel-video';
-
-// Theme
-@import 'themes/pushing-pixels';
+@import 'components/pixi';

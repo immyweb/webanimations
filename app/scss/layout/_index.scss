@@ -1,9 +1,10 @@
 .pp_index {
-    color: #fff;
+    color: $global5;
 
     h1 {
         display: block;
         width: 100%;
+        padding: 0 30px;
     }
 
     &__content {
@@ -12,11 +13,12 @@
     }
 
     a {
-        color: #ccc;
+        color: $global5;
         text-decoration: none;
     }
 
     &__col {
         width: 33.3%;
+        padding: 0 30px;
     }
 }
