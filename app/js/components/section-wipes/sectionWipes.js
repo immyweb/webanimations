@@ -11,8 +11,6 @@ export default class SectionSwipes {
     init(element) {
         this.panel = element;
 
-        console.log(this.panel);
-
         this.animateContent();
     }
 
@@ -20,16 +18,16 @@ export default class SectionSwipes {
         const controller = new ScrollMagic.Controller();
 
         const wipeAnimation = new TimelineMax()
-            .fromTo('.section-swipes__panel.turqoise', 1, { x: '-100%' }, { x: '0%', ease: Linear.easeNone })  // in from left
-            .fromTo('.section-swipes__panel.green',    1, { x:  '100%' }, { x: '0%', ease: Linear.easeNone })  // in from right
-            .fromTo('.section-swipes__panel.bordeaux', 1, { y: '-100%' }, { y: '0%', ease: Linear.easeNone }); // in from top
+            .fromTo('section.sw-panel.turqoise', 1, { x: '-100%' }, { x: '0%', ease: Linear.easeNone })  // in from left
+            .fromTo('section.sw-panel.green',    1, { x:  '100%' }, { x: '0%', ease: Linear.easeNone })  // in from right
+            .fromTo('section.sw-panel.bordeaux', 1, { y: '-100%' }, { y: '0%', ease: Linear.easeNone }); // in from top
 
         const scene = new ScrollMagic.Scene({
-                triggerElement: this.panel[0],
+                triggerElement: '#swipeContainer',
                 triggerHook: 'onLeave',
                 duration: '300%'
             })
-            .setPin(this.panel[0])
+            .setPin('#swipeContainer')
             .setTween(wipeAnimation)
             .addTo(controller);
     }

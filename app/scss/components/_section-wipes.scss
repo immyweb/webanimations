@@ -3,11 +3,7 @@
     height: 100%;
     overflow: hidden;
 
-    &__container {
-        position: relative;
-    }
-
-    &__panel {
+    .sw-panel {
         height: 100%;
         width: 100%;
         position: absolute;
@@ -28,14 +24,12 @@
             background-color: #953543;
         }
 
-        > b {
-            font-size: 15px;
-            color: white;
-            position: relative;
-            display: block;
-            height: 0;
-            overflow: visible;
-            top: 50%;
+        > p {
+          top: 50%;
+          transform: translateY(-50%);
+          position: relative;
+          font-size: 30px;
+          margin: 0;
         }
     }
 }
@@ -43,4 +37,8 @@
 .page-spacing {
     height: 500px;
     background: #ccc;
+}
+
+.container {
+    height: 100%;
 }
