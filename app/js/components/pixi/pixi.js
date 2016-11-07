@@ -2,9 +2,6 @@ import $script from 'scriptjs';
 
 export default class Pixi {
 
-    constructor() {
-    }
-
     init(element) {
 
         this.canvas = document.getElementById(element[0].id);
