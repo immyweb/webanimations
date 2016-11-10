@@ -7,9 +7,9 @@ export default {
     init: () => {
 
         let $p5 = $('#p5stage');
-        let p5el = $p5[0].id;
 
-        if ( $p5 ) {
+        if ( $p5 && $p5.length ) {
+            let p5el = $p5[0].id;
             new P5(sketch, p5el);
         }
     }
