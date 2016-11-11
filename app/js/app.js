@@ -5,6 +5,7 @@ import panelMessage from './components/panel-message/index';
 import pixi from './components/pixi/index';
 import p5 from './components/p5/index';
 import sectionWipes from './components/section-wipes/index';
+import parallax from './components/parallax/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -15,4 +16,5 @@ $(document).ready(() => {
     pixi.init();
     p5.init();
     sectionWipes.init();
+    parallax.init();
 });

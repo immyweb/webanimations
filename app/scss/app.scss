@@ -8,8 +8,6 @@
 @import 'utils/clearfix';
 
 // Layout
-@import 'layout/global-header';
-@import 'layout/global-footer';
 @import 'layout/index';
 
 // Components
@@ -22,3 +20,4 @@
 @import 'components/pixi';
 @import 'components/p5';
 @import 'components/section-wipes';
+@import 'components/parallax';

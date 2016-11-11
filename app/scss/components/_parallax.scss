@@ -1,0 +1,13 @@
+.parallax {
+
+    &__parent {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &__image {
+        height: 200%;
+        position: relative;
+        top: -100%;
+    }
+}
