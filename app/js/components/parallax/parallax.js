@@ -1,4 +1,3 @@
-import { TimelineMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
