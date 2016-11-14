@@ -19,16 +19,16 @@ export default class Parallax {
 
         // build scenes
       	new ScrollMagic.Scene({ triggerElement: '#parallax1' })
-      					.setTween('#parallax1 > div', { y: '80%', ease: Linear.easeNone })
-      					.addTo(controller);
+      		.setTween('#parallax1 > div', { y: '80%', ease: Linear.easeNone })
+      		.addTo(controller);
 
       	new ScrollMagic.Scene({ triggerElement: '#parallax2' })
-      					.setTween('#parallax2 > div', { y: '80%', ease: Linear.easeNone })
-      					.addTo(controller);
+      		.setTween('#parallax2 > div', { y: '80%', ease: Linear.easeNone })
+      		.addTo(controller);
 
       	new ScrollMagic.Scene({ triggerElement: '#parallax3' })
-      					.setTween('#parallax3 > div', { y: '80%', ease: Linear.easeNone })
-      					.addTo(controller);
+      		.setTween('#parallax3 > div', { y: '80%', ease: Linear.easeNone })
+      		.addTo(controller);
     }
 
 }
