@@ -1,5 +1,10 @@
+body {
+    background-color: #161616;
+    color: #fff;
+}
+
 .pp_index {
-    color: $global5;
+    // color: $global5;
 
     h1 {
         display: block;
@@ -8,17 +13,23 @@
     }
 
     &__content {
-        display: flex;
-        justify-content: space-around;
+        @media #{$screen-medium} {
+            display: flex;
+            justify-content: space-around;
+        }
     }
 
     a {
-        color: $global5;
+        color: #fff;
         text-decoration: none;
     }
 
     &__col {
-        width: 33.3%;
+        width: 100%;
         padding: 0 30px;
+
+        @media #{$screen-medium} {
+            width: 33.3%;
+        }
     }
 }
