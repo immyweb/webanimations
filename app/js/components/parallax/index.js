@@ -12,7 +12,7 @@ export default {
 
             $parallax.each((index, element) => {
                 parallax = new Parallax();
-    			      parallax.init( $(element) );
+    			parallax.init( $(element) );
             });
         }
     }
