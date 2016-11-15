@@ -7,6 +7,7 @@ import p5 from './components/p5/index';
 import sectionWipes from './components/section-wipes/index';
 import parallax from './components/parallax/index';
 import imageScroll from './components/pp-image-scroll/index';
+import ppSplash from './components/pp-splash/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -19,4 +20,5 @@ $(document).ready(() => {
     sectionWipes.init();
     parallax.init();
 	imageScroll.init();
+	ppSplash.init();
 });
