@@ -1,4 +1,4 @@
-let max_distance = 500;
+// let max_distance = 500;
 
 const s = ( sk ) => {
 
@@ -18,8 +18,8 @@ const s = ( sk ) => {
         for ( let gridY = 0; gridY < sk.width; gridY+=25 ) {
             for ( let gridX = 0; gridX < sk.height; gridX+=25 ) {
 
-                let diameter = sk.dist(sk.mouseX, sk.mouseY, gridX, gridY);
-                diameter = (diameter/max_distance) * 40;
+                // let diameter = sk.dist(sk.mouseX, sk.mouseY, gridX, gridY);
+                // diameter = (diameter/max_distance) * 40;
 
 				let ranSat = sk.random(70, 100);
 				let ranAlpha = sk.random(30, 70);
