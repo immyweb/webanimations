@@ -9,6 +9,7 @@ import parallax from './components/parallax/index';
 import imageScroll from './components/pp-image-scroll/index';
 import ppSplash from './components/pp-splash/index';
 import p5HelloForm from './components/p5-hello-form/index';
+import p5Grid from './components/p5-grid-alignment/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -23,4 +24,5 @@ $(document).ready(() => {
 	imageScroll.init();
 	ppSplash.init();
 	p5HelloForm.init();
+	p5Grid.init();
 });
