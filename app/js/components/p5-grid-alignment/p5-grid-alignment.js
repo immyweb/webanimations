@@ -1,43 +1,43 @@
 // let max_distance = 500;
 
-const s = ( sk ) => {
+const s = ( p5 ) => {
 
-    sk.setup = () => {
-        sk.createCanvas(sk.windowWidth, sk.windowHeight);
-		sk.colorMode(sk.HSB, sk.width, sk.height, 100, 100);
+    p5.setup = () => {
+        p5.createCanvas(p5.windowWidth, p5.windowHeight);
+		p5.colorMode(p5.HSB, p5.width, p5.height, 100, 100);
     };
 
-    sk.draw = () => {
-        sk.background(0, 0, 9);
-		// sk.noFill();
+    p5.draw = () => {
+        p5.background(0, 0, 9);
+		// p5.noFill();
 
-        // sk.stroke(0, 0, 100, 50);
-        sk.strokeWeight(2);
-		sk.ellipseMode(sk.CORNER);
+        // p5.stroke(0, 0, 100, 50);
+        p5.strokeWeight(2);
+		p5.ellipseMode(p5.CORNER);
 
-        for ( let gridY = 0; gridY < sk.width; gridY+=25 ) {
-            for ( let gridX = 0; gridX < sk.height; gridX+=25 ) {
+        for ( let gridY = 0; gridY < p5.width; gridY+=25 ) {
+            for ( let gridX = 0; gridX < p5.height; gridX+=25 ) {
 
-                // let diameter = sk.dist(sk.mouseX, sk.mouseY, gridX, gridY);
+                // let diameter = p5.dist(p5.mouseX, p5.mouseY, gridX, gridY);
                 // diameter = (diameter/max_distance) * 40;
 
-				let ranSat = sk.random(70, 100);
-				let ranAlpha = sk.random(30, 70);
+				let ranSat = p5.random(70, 100);
+				let ranAlpha = p5.random(30, 70);
 
-                sk.push();
-					// sk.translate(gridX, gridY, diameter*5);
-					sk.translate(gridX, gridY);
+                p5.push();
+					// p5.translate(gridX, gridY, diameter*5);
+					p5.translate(gridX, gridY);
 
-					sk.stroke(gridY, gridX, 100, ranAlpha);
-					sk.fill(gridX, gridY, ranSat, ranAlpha);
-					sk.ellipse(0, 0, 50, 50);
+					p5.stroke(gridY, gridX, 100, ranAlpha);
+					p5.fill(gridX, gridY, ranSat, ranAlpha);
+					p5.ellipse(0, 0, 50, 50);
 
-                    // sk.ellipse(0, 0, diameter, diameter);
-                sk.pop();
+                    // p5.ellipse(0, 0, diameter, diameter);
+                p5.pop();
             }
         }
 
-		sk.noLoop();
+		p5.noLoop();
     };
 };
 
