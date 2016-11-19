@@ -1,9 +1,27 @@
+import colourJson from '../../../data/colours.json';
+
+let colours = [];
+
+let image;
+
 const s = ( p5 ) => {
+
+	p5.preload = () => {
+		 image = p5.loadImage('../../../images/video-panel/bg-image.png');
+	};
 
     p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight);
-        p5.background(0, 0, 0);
+		p5.colorMode(p5.HSB, 360, 100, 100, 100);
+        p5.background('#1e1e20');
         p5.smooth();
+
+		colourJson.forEach((colour) => {
+			colours.push(p5.color(colour));
+		});
+
+		image.loadPixels();
+		console.log(image);
 
         let xstart = p5.random(10),
             xnoise = xstart,
@@ -20,17 +38,19 @@ const s = ( p5 ) => {
     };
 
     p5.drawPoint = (x, y, noiseFactor) => {
+		let index = p5.floor(p5.random(colours.length));
+		let ranColour = colours[index];
+
+		let hue = p5.hue(ranColour);
+		let saturation = p5.saturation(ranColour);
+		let bright = p5.brightness(ranColour);
+
         p5.push();
             p5.translate(x, y);
             p5.rotate(noiseFactor * p5.radians(360));
-            p5.colorMode(p5.HSB);
-            p5.stroke(71, 0, 100);
+            p5.stroke(hue, saturation, bright);
             p5.line(0, 0, 9, 0);
         p5.pop();
-    };
-
-    p5.draw = () => {
-        // sketch.background(51);
     };
 };
 

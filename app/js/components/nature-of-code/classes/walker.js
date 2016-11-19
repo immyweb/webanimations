@@ -12,7 +12,7 @@ export default class Walker {
 	}
 
 	step() {
-		let choice = Math.round(this.p5.random(4));
+		let choice = Math.floor(this.p5.random(4));
 		// let choice = Math.round(this.p5.randomGaussian(2, 1));
 
 		if (choice === 0) {

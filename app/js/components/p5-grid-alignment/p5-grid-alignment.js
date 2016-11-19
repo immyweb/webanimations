@@ -20,16 +20,17 @@ const s = ( p5 ) => {
 
                 // let diameter = p5.dist(p5.mouseX, p5.mouseY, gridX, gridY);
                 // diameter = (diameter/max_distance) * 40;
+				let gausAlpha = p5.randomGaussian(50, 20);
 
 				let ranSat = p5.random(70, 100);
-				let ranAlpha = p5.random(30, 70);
+				// let ranAlpha = p5.random(30, 70);
 
                 p5.push();
 					// p5.translate(gridX, gridY, diameter*5);
 					p5.translate(gridX, gridY);
 
-					p5.stroke(gridY, gridX, 100, ranAlpha);
-					p5.fill(gridX, gridY, ranSat, ranAlpha);
+					p5.stroke(gridY, gridX, 100, gausAlpha);
+					p5.fill(gridX, gridY, ranSat, gausAlpha);
 					p5.ellipse(0, 0, 50, 50);
 
                     // p5.ellipse(0, 0, diameter, diameter);
