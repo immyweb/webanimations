@@ -2,13 +2,7 @@ import colourJson from '../../../data/colours.json';
 
 let colours = [];
 
-let image;
-
 const s = ( p5 ) => {
-
-	p5.preload = () => {
-		 image = p5.loadImage('../../../images/video-panel/bg-image.png');
-	};
 
     p5.setup = () => {
         p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -19,9 +13,6 @@ const s = ( p5 ) => {
 		colourJson.forEach((colour) => {
 			colours.push(p5.color(colour));
 		});
-
-		image.loadPixels();
-		console.log(image);
 
         let xstart = p5.random(10),
             xnoise = xstart,

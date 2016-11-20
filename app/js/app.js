@@ -12,6 +12,7 @@ import p5HelloForm from './components/p5-hello-form/index';
 import p5Grid from './components/p5-grid-alignment/index';
 import p5Mandala from './components/p5-mandala/index';
 import natureOfCode from './components/nature-of-code/index';
+import p5PixelColourist from './components/p5-pixel-colourist/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -28,4 +29,5 @@ $(document).ready(() => {
 	p5Grid.init();
 	p5Mandala.init();
 	natureOfCode.init();
+	p5PixelColourist.init();
 });
