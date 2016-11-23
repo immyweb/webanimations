@@ -14,10 +14,6 @@ const s = ( p5 ) => {
 		colours = [p5.color('#ffffff'), p5.color('#e6e2d2'), p5.color('#52616d'), p5.color('#2c343b'), p5.color('#c44740'), p5.color('#fd6e5e')];
     };
 
-    p5.draw = () => {
-
-    };
-
 	p5.mouseDragged = () => {
 		p5.push();
 			// p5.translate(p5.width/2, p5.height/2);

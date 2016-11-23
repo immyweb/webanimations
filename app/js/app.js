@@ -14,6 +14,7 @@ import p5Mandala from './components/p5-mandala/index';
 import natureOfCode from './components/nature-of-code/index';
 import p5PixelColourist from './components/p5-pixel-colourist/index';
 import p5Flower from './components/p5-flower-of-life/index';
+import mojsBubbleLayout from './components/mojs-bubble-layout/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -32,4 +33,5 @@ $(document).ready(() => {
 	natureOfCode.init();
 	p5PixelColourist.init();
 	p5Flower.init();
+	mojsBubbleLayout.init();
 });

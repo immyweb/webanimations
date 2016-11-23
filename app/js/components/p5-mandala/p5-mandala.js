@@ -39,7 +39,7 @@ const s = ( p5 ) => {
 
 				p5.strokeWeight(ranStroke);
 				p5.stroke(hue, saturation, bright, 90);
-				p5.fill(hue, saturation, bright, 5);
+				// p5.fill(hue, saturation, bright, 5);
 
 				p5.ellipse(0, 0, randomWidth);
 				p5.rect(0, 0, randomWidth, randomWidth);
