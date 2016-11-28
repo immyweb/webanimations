@@ -1,5 +1,6 @@
 import mojs from 'mo-js';
 import colourJson from '../../../data/colours.json';
+import randomInt from '../../utils/randomInt';
 
 const smallCircles = [];
 const colors = colourJson;
@@ -18,28 +19,40 @@ export default class BubbleLayout {
 
 	draw() {
 
-		for ( let i = 0; i < 5; i++ ) {
+		for ( let i = 0; i < 35; i++ ) {
+			let randomIndex = randomInt(0, colors.length);
+			let randomIndex2 = randomInt(0, colors.length);
+
 			smallCircles.push(
 				new mojs.Shape({
+					parent:			this.container,
 					shape:          'circle',
-					fill:           'none',
-				    radius:         circleRadius,
-					stroke:			colors[i % colors.length],
+					fill:           colors[randomIndex2],
+					fillOpacity:    'rand(0.25, 0.75)',
+				    radius:         'rand(25, 125)',
+					stroke:			colors[randomIndex],
+					strokeWidth:    'rand(1, 3)',
 					left:			`rand(0, ${w})`,
 					top:			`rand(0, ${h})`,
-					isShowStart:    true
+					isShowStart:    true,
+
+					scale:          { 1: 1.5 },
+					duration:       500
 				})
 			);
 		}
 
-		document.addEventListener( 'click', (e) => {
+		smallCircles.forEach(smallCircle => {
 
-			smallCircles.forEach(smallCircle => {
+			smallCircle.el.addEventListener('mouseover', (e) => {
 				smallCircle
-					.generate() // Regenerate randoms that the shape had on initialization
-					.replay();
+					.play()
+					// .generate();
+					// .replay();
 			});
+
 		});
+
 	}
 
 }
