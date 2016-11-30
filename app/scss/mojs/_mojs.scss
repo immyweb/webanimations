@@ -1,4 +1,7 @@
 .bubble-layout {
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	min-height: 1000px;
+	position: relative;
+	background: linear-gradient(#1e1e20 , #52616d);
+	// overflow: hidden;
 }
