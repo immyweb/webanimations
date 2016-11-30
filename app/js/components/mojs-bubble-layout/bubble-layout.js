@@ -11,7 +11,7 @@ const smallCircles = [];
 const colors = colourJson;
 
 const w = window.innerWidth;
-const h = window.innerHeight;
+// const h = window.innerHeight;
 
 mojs.addShape('poly1', Poly1);
 mojs.addShape('poly2', Poly2);

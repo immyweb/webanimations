@@ -50,6 +50,7 @@
     "p5": "^0.5.4",
     "scriptjs": "^2.5.8",
     "scrollmagic": "^2.0.5",
+    "snapsvg": "^0.4.0",
     "youtube-player": "^3.0.4"
   }
 }
