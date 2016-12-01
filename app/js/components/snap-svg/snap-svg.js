@@ -7,6 +7,8 @@ const colors = colourJson;
 const w = window.innerWidth;
 const h = window.innerHeight;
 
+const s = Snap('#snap-svg');
+
 export default class SnapSvg {
 
     init() {
@@ -14,7 +16,6 @@ export default class SnapSvg {
     }
 
 	draw() {
-		const s = Snap('#snap-svg');
 
 		Snap.load('../../images/svgs/design1.svg', (f) => {
 			let poly1 = f.select('#poly1');
@@ -23,7 +24,7 @@ export default class SnapSvg {
 			// let layer2 = poly1.select('.cls-2');
 
 			for ( let gridX = 0; gridX < w; gridX+=57 ) {
-				for ( let gridY = 0; gridY < h; gridY+=51 ) {
+				for ( let gridY = 0; gridY < 350; gridY+=51 ) {
 
 					let randomIndex = random(colors.length-1);
 					let randomAlpha = random(0.25, 0.75);
@@ -40,9 +41,13 @@ export default class SnapSvg {
 					s.append(clone);
 				}
 			}
+
+			this.animate();
 		});
+	}
 
-
+	animate() {
+		console.log(s.select('g'));
 	}
 
 }
