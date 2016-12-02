@@ -1,8 +1,5 @@
-// import $ from 'jquery';
 import { TimelineMax } from 'gsap';
 import CSSRulePlugin from 'gsap/src/uncompressed/plugins/CSSRulePlugin.js';
-
-let tlProjects;
 
 export default class PanelHero {
 
@@ -14,9 +11,12 @@ export default class PanelHero {
 		this.projectImageBefore = CSSRulePlugin.getRule('.project-image:before');
 		this.projectImageAfter = CSSRulePlugin.getRule('.project-image:after');
 
+		this.tlProjects = new TimelineMax();
+
 		this.tlProject = new TimelineMax({
 			repeat: -1,
 			repeatDelay: 2
+			// paused: true
 		});
 
 		this.projectClasses = this.project.attr('class').split(' ');
@@ -28,12 +28,33 @@ export default class PanelHero {
 		this.projectSubtitle = this.project.find('.project-subtitle');
 		this.projectImage = this.project.find('.project-image');
 
+		// Project CTA
+		this.tlProjectsCTA = new TimelineMax();
+		this.projectLink = this.project.find('.button-container');
+		this.projectLinkButton = this.projectLink.find('.button');
+		this.projectLinkSpan = this.projectLink.find('.bp');
+		this.projectLinkText = this.projectLink.find('.bp-text');
+
 		this.animate();
 
 		console.log(this);
     }
 
 	animate() {
+
+		// Main project timeline
+		this.tlProjects
+			.set(this.projects, { autoAlpha: 1 });
+
+		// CTA timeline
+		this.tlProjectsCTA
+			.to(this.projectSubtitle, 0.3,
+				{ autoAlpha: 0, yPercent: 100, ease: Back.easeOut })
+			.staggerFrom(this.projectLinkSpan, 0.7,
+				{ autoAlpha: 0, yPercent: '-100', ease: Back.easeOut }, 0.1)
+			.from(this.projectLinkText, 0.3,
+				{ autoAlpha: 0, x: '-100%', ease: Power4.easeInOut }, '-=0.2')
+		;
 
 		// Create project timeline
 		this.tlProject
@@ -53,6 +74,7 @@ export default class PanelHero {
 				{ autoAlpha: 0, xPercent: '-50' },
 				{ autoAlpha: 1, xPercent: '-2', ease: Power4.easeInOut }, '-=0.5')
 			.add('titleIn')
+			.add(this.tlProjectsCTA, '+=2') // Add button animation timeline
 			.to(this.projectTitle, 4.3,
 				{ xPercent: '+=5', ease: Linear.easeNone }, 'titleIn-=0.1')
 			.to(this.projectSubtitle, 4.3,
@@ -63,7 +85,7 @@ export default class PanelHero {
 			.add('imageOut')
 			.to(this.pixels, 4.1,
 				{ xPercent: '-5', ease: Linear.easeNone }, 'pixelsIn')
-			.to([this.projectTitle, this.projectSubtitle], 0.5,
+			.to([this.projectTitle, this.projectSubtitle, this.projectLink], 0.5,
 				{ autoAlpha: 0, xPercent: '+=10', ease: Power4.easeInOut }, 'titleOut')
 			.to(this.projectImage, 0.4,
 				{ autoAlpha: 0, xPercent: '+=80', ease: Power4.easeInOut }, 'imageOut')
