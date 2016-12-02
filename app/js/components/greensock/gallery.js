@@ -14,14 +14,14 @@ export default class PanelHero {
 
 		const tlCircles = new TimelineMax({ repeat: -1 });
 		tlCircles
-			.to($projectImageBefore, 0.8, {cssRule:{top:"5px"}, ease:Linear.easeNone})
-			.to($projectImageBefore, 0.8, {cssRule:{left:"5px"}, ease:Linear.easeNone})
-			.to($projectImageBefore, 0.8, {cssRule:{top:"-5px"}, ease:Linear.easeNone})
-			.to($projectImageBefore, 0.8, {cssRule:{left:"-5px"}, ease:Linear.easeNone})
-			.to($projectImageAfter, 0.7, {cssRule:{bottom:"6px"}, ease:Linear.easeNone}, '0')
-			.to($projectImageAfter, 0.7, {cssRule:{right:"6px"}, ease:Linear.easeNone}, '0.7')
-			.to($projectImageAfter, 0.7, {cssRule:{bottom:"-6px"}, ease:Linear.easeNone}, '1.1')
-			.to($projectImageAfter, 0.7, {cssRule:{right:"-6px"}, ease:Linear.easeNone}, '1.5');
+			.to($projectImageBefore, 0.8, { cssRule: { top: "5px" }, ease: Linear.easeNone })
+			.to($projectImageBefore, 0.8, { cssRule: { left: "5px" }, ease: Linear.easeNone })
+			.to($projectImageBefore, 0.8, { cssRule: { top: "-5px" }, ease: Linear.easeNone })
+			.to($projectImageBefore, 0.8, { cssRule: { left: "-5px" }, ease: Linear.easeNone })
+			.to($projectImageAfter, 0.7, { cssRule: { bottom: "6px" }, ease: Linear.easeNone }, '0')
+			.to($projectImageAfter, 0.7, { cssRule: { right: "6px" }, ease: Linear.easeNone }, '0.7')
+			.to($projectImageAfter, 0.7, { cssRule: { bottom: "-6px" }, ease: Linear.easeNone }, '1.1')
+			.to($projectImageAfter, 0.7, { cssRule: { right: "-6px" }, ease: Linear.easeNone }, '1.5');
 
 		// Main project timeline
 		const tlProjects = new TimelineMax();
