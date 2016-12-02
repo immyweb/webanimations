@@ -24,7 +24,7 @@ export default class SnapSvg {
 			// let layer2 = poly1.select('.cls-2');
 
 			for ( let gridX = 0; gridX < w; gridX+=57 ) {
-				for ( let gridY = 0; gridY < 350; gridY+=51 ) {
+				for ( let gridY = 0; gridY < 300; gridY+=51 ) {
 
 					let randomIndex = random(colors.length-1);
 					let randomAlpha = random(0.25, 0.75);
