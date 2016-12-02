@@ -14,7 +14,7 @@ import p5Mandala from './components/p5-mandala/index';
 import natureOfCode from './components/nature-of-code/index';
 import p5PixelColourist from './components/p5-pixel-colourist/index';
 import p5Flower from './components/p5-flower-of-life/index';
-import mojsBubbleLayout from './components/mojs-bubble-layout/index';
+// import mojsBubbleLayout from './components/mojs-bubble-layout/index';
 import snapSvg from './components/snap-svg/index';
 import greensock1 from './components/greensock/index';
 
@@ -35,7 +35,7 @@ $(document).ready(() => {
 	natureOfCode.init();
 	p5PixelColourist.init();
 	p5Flower.init();
-	mojsBubbleLayout.init();
+	// mojsBubbleLayout.init();
 	snapSvg.init();
 	greensock1.init();
 });

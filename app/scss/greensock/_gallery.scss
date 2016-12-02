@@ -16,6 +16,8 @@
 }
 
 .project01 {background-color: #4d5126;}
+.project02 {background-color: #a8b183;}
+.project03 {background-color: #988685;}
 
 /* =Project Slides */
 .project {
@@ -31,8 +33,7 @@
 .project-image img,
 .project-image:before,
 .project-image:after {
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
 }
 .project-image:before {
     content: '';
@@ -96,8 +97,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-border-radius: 100%;
-            border-radius: 100%;
+    border-radius: 100%;
     z-index: 3;
 }
 .pixel01 {left: 100px; top: -130px}

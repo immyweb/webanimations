@@ -1,11 +1,11 @@
 import Snap from 'snapsvg';
-import TweenMax from 'gsap';
+// import TweenMax from 'gsap';
 import colourJson from '../../../data/colours.json';
 import { random } from 'lodash';
 
 const colors = colourJson;
 const w = window.innerWidth;
-const h = window.innerHeight;
+// const h = window.innerHeight;
 
 const s = Snap('#snap-svg');
 
