@@ -1,11 +1,4 @@
-.slidesContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: hidden;
-
+.slidesContainer-wrapper {
 	font: 16px/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial, sans-serif;
     background-color: #2e2e30;
     color: #fff;
@@ -13,6 +6,20 @@
 	h1, h2, h3, h4 {
 	  font-weight: 700;
 	}
+
+	&.loading .slide {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.slidesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
 
 	.slideContent {
 	    position: absolute;
@@ -50,10 +57,7 @@
 	    visibility: visible;
 	}
 
-	.loading .slide {
-	    opacity: 0;
-	    visibility: hidden;
-	}
+
 
 	.bcg {
 	    background-size: cover;
