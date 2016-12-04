@@ -1,6 +1,14 @@
 import $ from 'jquery';
 import { TimelineMax } from 'gsap';
 
+/*
+    Colors before reset
+    Green #73C996, Red - #F8876E, Yellow - #F8AD43
+
+    Meter bcg -  #c6d7df to #5AB783,
+    Meter stroke -  #7c99a2 to #448962
+*/
+
 export default class SvgLab {
 
     init(element) {
@@ -25,6 +33,20 @@ export default class SvgLab {
 			$LiquidInsideMask05 = this.panel.find('#LiquidInside5Mask'),
 			$LiquidInsideMask06 = this.panel.find('#LiquidInside6Mask'),
 			$LiquidInsideMask07 = this.panel.find('#LiquidInside7Mask'),
+			$bulb1 = this.panel.find('#Bulb1 .bulb'),
+			$bulb2 = this.panel.find('#Bulb2 .bulb'),
+			$bulb3 = this.panel.find('#Bulb3 .bulb'),
+			$meterBcg = this.panel.find('#meterBcg'),
+			$meterStroke = this.panel.find('#meterStroke'),
+			$part2light = this.panel.find('#Part2 .light'),
+			$part2lightLeft = this.panel.find('#Part2 .light-left'),
+			$part2lightMid = this.panel.find('#Part2 .light-mid'),
+			$part2lightRight = this.panel.find('#Part2 .light-right'),
+			$printerLightsTop = this.panel.find('#PrinterLIghtTop, #PrinterLIghtTop_2_'),
+			$printerLightsBottom = this.panel.find('#PrinterLIghtBottom, #PrinterLIghtBottom_1_'),
+			$mainLight = this.panel.find('#MainLight'),
+			$paper = this.panel.find('#Paper'),
+			$slider = this.panel.find('#slider'),
 			mainTl = new TimelineMax();
 
 		function clearStage() {
@@ -41,6 +63,7 @@ export default class SvgLab {
 				.set($LiquidInsideMask05, { attr: { y: 654 } })
 				.set($LiquidInsideMask06, { attr: { y: 651 } })
 				.set($LiquidInsideMask07, { attr: { y: 651 } })
+				.set($paper, { y: '+55' })
 			;
 
 			return clearTl;
