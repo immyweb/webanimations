@@ -1,0 +1,33 @@
+.svg-lab {
+	font: 16px/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial, sans-serif;
+	background-color: #69d1e2;
+	color: #294C67;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+
+	h1, h2, h3, h4 {
+		font-weight: 700;
+	}
+
+	h1 {
+	    font-size: 40px;
+	    line-height: 50px;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    font-weight: 300;
+	    text-align: center;
+	    white-space: nowrap;
+	    transform: translate(-50%, -150%);
+	}
+
+	#lab {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -54%);
+	    width: 900px;
+	    height: 675px;
+	}
+}

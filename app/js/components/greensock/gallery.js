@@ -43,7 +43,6 @@ export default class GsapGallery {
 			// Project CTA
 			const tlProjectsCTA = new TimelineMax(),
 				$projectLink = $(element).find('.button-container'),
-				$projectLinkButton = $projectLink.find('.button'),
 				$projectLinkSpan = $projectLink.find('.bp'),
 				$projectLinkText = $projectLink.find('.bp-text');
 

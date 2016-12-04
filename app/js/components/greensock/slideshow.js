@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import { TweenLite, TimelineLite } from 'gsap';
-import CSSRulePlugin from 'gsap/src/uncompressed/plugins/CSSRulePlugin.js';
 
 export default class GsapSlideshow {
 
@@ -8,8 +7,7 @@ export default class GsapSlideshow {
         this.panel = element;
 
 		// Variables
-		let sectionForm,
-			$slide = this.panel.find('.slide'),
+		let sectionFrom,
 			$slideActive = this.panel.find('.slide.active'),
 			$navLink = this.panel.find('.nav a'),
 			$navLi = this.panel.find('.nav li'),
@@ -31,8 +29,8 @@ export default class GsapSlideshow {
 
 			// Prevent animation when animating
 			if ( !$wrapper.hasClass('is-animating') ) {
-				let sectionFrom = this.panel.find('.slide.active'),
-					sectionToID = $(e.target).attr('href'),
+				sectionFrom = this.panel.find('.slide.active');
+				let sectionToID = $(e.target).attr('href'),
 					sectionTo = $('div'+sectionToID);
 
 				if ( sectionFrom.attr('id') !== sectionTo.attr('id') ) {
@@ -47,8 +45,8 @@ export default class GsapSlideshow {
 
 			let heading = sectionTo.find('h1'),
 				subHeading = sectionTo.find('p'),
-				bcg = sectionTo.find('.bcg'),
-				bcgFrom = sectionFrom.find('.bcg'),
+				// bcg = sectionTo.find('.bcg'),
+				// bcgFrom = sectionFrom.find('.bcg'),
 				tlNext = new TimelineLite({ onComplete: setActiveSection(sectionFrom, sectionTo) }),
 				tlPrev = new TimelineLite();
 
