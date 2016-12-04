@@ -18,7 +18,7 @@ export default class GsapSlideshow {
 		// Init function
 		function init() {
 			// Set active slide visible
-			TweenLite.set($slideActive, { y: '0%' });
+			TweenLite.set($slideActive, { x: '0%' });
 
 			// Fade slides in
 			TweenLite.set($wrapper, { className: '-=loading' });
@@ -28,14 +28,16 @@ export default class GsapSlideshow {
 		// Navigation click
 		$navLink.on('click', (e) => {
 
-			let sectionFrom = this.panel.find('.slide.active'),
-				sectionToID = $(e.target).attr('href'),
-				sectionTo = $('div'+sectionToID);
+			// Prevent animation when animating
+			if ( !$wrapper.hasClass('is-animating') ) {
+				let sectionFrom = this.panel.find('.slide.active'),
+					sectionToID = $(e.target).attr('href'),
+					sectionTo = $('div'+sectionToID);
 
-			if ( sectionFrom.attr('id') !== sectionTo.attr('id') ) {
-				scrollToSection(sectionFrom, sectionTo);
+				if ( sectionFrom.attr('id') !== sectionTo.attr('id') ) {
+					scrollToSection(sectionFrom, sectionTo);
+				}
 			}
-
 
 			e.preventDefault();
 		});
@@ -46,23 +48,35 @@ export default class GsapSlideshow {
 				subHeading = sectionTo.find('p'),
 				bcg = sectionTo.find('.bcg'),
 				bcgFrom = sectionFrom.find('.bcg'),
-				tlDown = new TimelineLite({ onComplete: setActiveSection(sectionFrom, sectionTo) }),
-				tlUp = new TimelineLite();
+				tlNext = new TimelineLite({ onComplete: setActiveSection(sectionFrom, sectionTo) }),
+				tlPrev = new TimelineLite();
 
 			if ( sectionFrom.index() < sectionTo.index() ) {
 
 				// console.log('going down');
-				tlDown
-					.to(sectionFrom, 1.2, { y: '-=100%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
-					.to(sectionTo, 1.2, { y: '0%', ease: Power4.easeInOut }, '0')
-					.to(bcgFrom, 1.2, { y: '30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
-					.from(bcg, 1.2, { y: '-30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
-					.from(heading, 0.7, {autoAlpha: 0, y: 40, ease: Power4.easeInOut }, '-=1')
-					.from(subHeading, 0.7, {autoAlpha: 0, y: 40, ease: Power4.easeInOut }, '-=0.6');
+				tlNext
+					.set($wrapper, { className: '+=is-animating' })
+					.to(sectionFrom, 1.2, { x: '-=100%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.to(sectionTo, 1.2, { x: '0%', ease: Power4.easeInOut }, '0')
+					.to(bcgFrom, 1.2, { x: '30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.from(bcg, 1.2, { x: '-30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.from(heading, 0.7, {autoAlpha: 0, x: 40, ease: Power4.easeInOut }, '-=1')
+					.from(subHeading, 0.7, {autoAlpha: 0, x: 40, ease: Power4.easeInOut }, '-=0.6')
+					.set($wrapper, { className: '-=is-animating' });
 
 			} else {
 
 				// console.log('going up');
+				tlPrev
+					.set($wrapper, { className: '+=is-animating' })
+					.set(sectionTo, { x: '-100%' })
+					.to(sectionFrom, 1.2, { x: '100%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.to(sectionTo, 1.2, { x: '0%', ease: Power4.easeInOut }, '0')
+					.to(bcgFrom, 1.2, { x: '-30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.from(bcg, 1.2, { x: '30%', ease: Power4.easeInOut, clearProps: 'all' }, '0')
+					.from(heading, 0.7, {autoAlpha: 0, x: 40, ease: Power4.easeInOut }, '-=1')
+					.from(subHeading, 0.7, {autoAlpha: 0, x: 40, ease: Power4.easeInOut }, '-=0.6')
+					.set($wrapper, { className: '-=is-animating' });
 
 			}
 
