@@ -17,6 +17,10 @@ export default class SvgLab {
 
 		const $body = this.panel,
 			$coin = this.panel.find('#Coin'),
+			path = [ { x: -90, y: 120 }, { x: -45, y: -220 }, { x: 0, y: 120 } ],
+			$BulbIdea = this.panel.find('#BulbIdea'),
+			$BulbIdeaLight = this.panel.find('#MainBulb2'),
+			$part1 = this.panel.find('#Part1'),
 			$Petr = this.panel.find('#Petr'),
 			$h1 = this.panel.find('h1'),
 			$MainBulb = this.panel.find('#MainBulb'),
@@ -106,10 +110,45 @@ export default class SvgLab {
 			return introTl;
 		}
 
+		function getIdeaTl() {
+			const ideaTl = new TimelineMax();
+
+			ideaTl
+				// Got idea
+				.set($BulbIdea, { autoAlpha: 1, immediateRender: false })
+				.from($BulbIdea, 0.5, { y: '+=40px', ease: Bounce.easeOut })
+				.set($h1, { y: '-=30px', text: 'You have a cool idea, right?' })
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'And now what?' })
+				.fromTo($BulbIdeaLight, 0.3, { fill: '#ffffff' }, { fill: '#73C996', repeat: 3, yoyo: true })
+				.fromTo($BulbIdeaLight, 0.3, { fill: '#ffffff' }, { fill: '#F8876E', repeat: 3, yoyo: true })
+				.fromTo($BulbIdeaLight, 0.8, { fill: '#ffffff' }, { fill: '#F8AD43' })
+				.to($BulbIdea, 0.6, { y: '-=20px', scale: 1.1, transformOrigin: 'center bottom', ease: Power4.easeOut })
+				.to($BulbIdea, 0.2, { y: '+=120px', scale: 0.8, ease: Back.easeIn })
+
+				// Idea out of head
+				.set($coin, { autoAlpha: 1 }, '+=0.3')
+				.to($coin, 6, { rotation: 720, bezier: { curviness: 0.3, values: path }, ease: SlowMo.ease.config(0.9, 0.7, false) })
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut }, '-=5.5')
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '-=3.5')
+				.set($h1, { y: '-=30px', text: 'Let Greensock do the rest' }, '-=3.5')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut }, '-=3.2')
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '-=1.2')
+				.to($part1, 0.06, { rotation: 5, y: '+=5px', x: '+=3px', transformOrigin: 'bottom right', repeat: 5, yoyo: true })
+			;
+
+			return ideaTl;
+		}
+
 		function init() {
 			mainTl
 				.add(clearStage())
-				.add(getIntroTl(), 'scene-intro');
+				.add(getIntroTl(), 'scene-intro')
+				.add(getIdeaTl(), 'scene-idea')
+			;
+
+			mainTl.seek('scene-idea-=3');
 		}
 		init();
 
