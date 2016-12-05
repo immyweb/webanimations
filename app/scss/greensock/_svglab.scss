@@ -1,10 +1,16 @@
 .svg-lab {
 	font: 16px/1.5 'Open Sans', Helvetica, Helvetica Neue, Arial, sans-serif;
-	background-color: #69d1e2;
+	background-color: #fff;
 	color: #294C67;
 	overflow: hidden;
 	height: 100vh;
 	width: 100vw;
+
+	transition: all 1s linear;
+
+	&.is-active {
+		background-color: #69d1e2;
+	}
 
 	h1, h2, h3, h4 {
 		font-weight: 700;
@@ -31,7 +37,7 @@
 	    height: 675px;
 	}
 
-	h1, #BulbIdea {
+	h1, #BulbIdea, #Petr, #Coin, #stage {
 		visibility: hidden;
 		opacity: 0;
 	}
