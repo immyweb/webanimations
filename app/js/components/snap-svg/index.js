@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import SnapSvg from './raining-shapes';
+import ScrollingGrid from './scrolling-grid';
 
 export default {
 
@@ -13,6 +14,17 @@ export default {
             $snapSvg.each((index, element) => {
                 snapSvg = new SnapSvg();
     			snapSvg.init( $(element) );
+            });
+        }
+
+		let $scrollingGrid = $('.js-scrolling-grid');
+        let scrollingGrid;
+
+        if ( $scrollingGrid && $scrollingGrid.length ) {
+
+            $scrollingGrid.each((index, element) => {
+                scrollingGrid = new ScrollingGrid();
+    			scrollingGrid.init( $(element) );
             });
         }
     }
