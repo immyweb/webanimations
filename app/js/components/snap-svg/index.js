@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import SnapSvg from './snap-svg';
+import SnapSvg from './raining-shapes';
 
 export default {
 
