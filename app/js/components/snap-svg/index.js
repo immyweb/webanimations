@@ -5,7 +5,7 @@ export default {
 
     init: () => {
 
-        let $snapSvg = $('#snap-svg');
+        let $snapSvg = $('.js-snap-svg1');
         let snapSvg;
 
         if ( $snapSvg && $snapSvg.length ) {
