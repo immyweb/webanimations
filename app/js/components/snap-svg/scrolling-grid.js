@@ -22,10 +22,10 @@ export default class ScrollingGrid {
     }
 
 	loadSVGs() {
-		let _this = this;
+		const _this = this;
 
 		function imagesLoaded(shapesArray) {
-			_this.draw(shapesArray)
+			_this.draw(shapesArray);
 		}
 
 		function loadMulti(list) {
@@ -47,13 +47,14 @@ export default class ScrollingGrid {
 			}
 		}
 
-		let myLoadList = [ '../../images/svgs/design1.svg', '../../images/svgs/design2-2.svg' ];
+		const myLoadList = [ '../../images/svgs/design1.svg', '../../images/svgs/design2-2.svg' ];
 
 		loadMulti(myLoadList);
 	}
 
 	draw(shapesArray) {
-
+		console.log(shapesArray);
+		console.log(colors);
 	}
 
 }
