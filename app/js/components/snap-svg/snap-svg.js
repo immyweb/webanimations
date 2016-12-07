@@ -26,7 +26,7 @@ export default class SnapSvg {
 			// let layer1 = poly1.select('.cls-1');
 			// let layer2 = poly1.select('.cls-2');
 
-			for ( let gridY = 0; gridY < 300; gridY+=51 ) {
+			for ( let gridY = 0; gridY < 100; gridY+=51 ) {
 				for ( let gridX = 0; gridX < w; gridX+=57 ) {
 
 					index = index + 1;
@@ -52,18 +52,18 @@ export default class SnapSvg {
 	}
 
 	animate() {
+
+		// Play button triggers rain fall
+		// When rain fall finishes, reset button appears
+
 		let svgGroup = s.selectAll('g'),
 			$shapes = this.container.find('.shape');
 
-		const tlRainShapes = new TimelineMax();
-
-		tlRainShapes
-			.staggerTo($shapes, 0.75, { y: h-100, ease: Power4.easeIn, onComplete: bounceUp, onCompleteParams: ["{self}"] }, -0.1)
-		;
+		TweenMax.staggerTo($shapes, 1.25, { y: h-100, ease: Bounce.easeOut, onComplete: bounceUp, onCompleteParams: ["{self}"] }, -0.1);
 
 		function bounceUp(tween) {
 			// console.log(tween.target);
-			TweenMax.to(tween.target, 0.5, { y: '-=100px' })
+
 		}
 	}
 
