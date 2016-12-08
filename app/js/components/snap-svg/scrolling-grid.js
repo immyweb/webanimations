@@ -9,9 +9,7 @@ const wW = window.innerWidth;
 const wH = window.innerHeight;
 
 const s = Snap('#scrollingGrid');
-let index = 0;
 let shapesArray = [];
-let shapesStartPos = [];
 
 export default class ScrollingGrid {
 
@@ -47,14 +45,52 @@ export default class ScrollingGrid {
 			}
 		}
 
-		const myLoadList = [ '../../images/svgs/design1.svg', '../../images/svgs/design2-2.svg' ];
+		const myLoadList = [ '../../images/svgs/design1.svg' ];
 
 		loadMulti(myLoadList);
 	}
 
 	draw(shapesArray) {
-		console.log(shapesArray);
-		console.log(colors);
+
+		for ( let i = 0; i < 175; i++) {
+
+			let randomIndex1 = random(colors.length-1);
+			let randomIndex2 = random(colors.length-1);
+			let randomAlpha = random(0.25, 0.75);
+			let randomShapeIndex = random(shapesArray.length-1);
+			let randomSize = random(0.25, 1.75);
+			let randomX = random(wW);
+			let randomY = random(wH);
+			// let randomAngle = random(4) * 90;
+
+			let shape = shapesArray[randomShapeIndex].select('g');
+
+			const clone = shape.clone();
+
+			clone.transform(new Snap.Matrix()
+				.scale(randomSize)
+				.translate(randomX, randomY));
+
+			let layer1 = clone.select('.cls-1');
+			let layer2 = clone.select('.cls-2');
+
+			layer1.attr({
+				fill: colors[randomIndex1],
+				stroke: colors[randomIndex2],
+				strokeWidth: 1,
+				fillOpacity: randomAlpha
+			});
+
+			layer2.attr({
+				fill: colors[randomIndex2],
+				stroke: colors[randomIndex1],
+				strokeWidth: 1,
+				fillOpacity: randomAlpha
+			});
+			clone.addClass('shape');
+
+			s.append(clone);
+		}
 	}
 
 }
