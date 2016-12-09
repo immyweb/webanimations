@@ -132,6 +132,59 @@ export default class SvgLab {
 			return part2Tl;
 		}
 
+		function getFillTubesTl() {
+			const fillTubesTl = new TimelineMax();
+
+			// Get path length
+			// const path = document.querySelector('#Liquid1');
+			// const length = path.getTotalLength();
+
+			let liquidLength = [131, 213, 228, 124, 124, 124, 101, 345, 393];
+
+			// Reset all liquid to invisible - there a few exceptions
+			$Liquids.each((index, element) => {
+				TweenMax.set(element, { strokeDasharray: liquidLength[index], strokeDashoffset: liquidLength[index] });
+			});
+
+			fillTubesTl
+				.set($Liquids, { stroke: '#F8876E' })
+				.to($Liquid01, 2, { strokeDashoffset: 0, ease: Power0.easeNone })
+				// Create a Tween
+				.add('flask01')
+				.set($h1, { y: '-=30px', text: 'Create a tween' })
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'and another one' })
+				.to($Liquid02, 0.5, { strokeDashoffset: 0, ease: Power0.easeNone }, '-=0.2')
+
+				// add another one
+				.add('flask02')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'add them to a timeline' })
+				.to($Liquid03, 0.5, { strokeDashoffset: 0, ease: Power0.easeNone }, '-=0.1')
+
+				// add them to the timeline
+				.add('flask03')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'create multiple timelines' })
+				.to($Liquid04, 0.5, { strokeDashoffset: 0, ease: Power0.easeNone })
+				.to($Liquid05, 0.5, { strokeDashoffset: 0, ease: Power0.easeNone })
+
+				// Create multiple timelines
+				.to($Liquid06, 0.7, { strokeDashoffset: 0, ease: Power0.easeNone })
+				.add('flask04')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'fine tune easing' })
+
+				// 7, 8, 9
+			;
+
+			return fillTubesTl;
+		}
+
 		function getIdeaTl() {
 			const ideaTl = new TimelineMax();
 
@@ -169,9 +222,10 @@ export default class SvgLab {
 				.add(getIntroTl(), 'scene-intro')
 				.add(getIdeaTl(), 'scene-idea')
 				.add(getPart2Tl(), 'scene-part2')
+				.add(getFillTubesTl(), 'scene-tubes')
 			;
 
-			mainTl.seek('scene-part2-=2');
+			mainTl.seek('scene-tubes+=2');
 		}
 		init();
 
