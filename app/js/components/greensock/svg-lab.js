@@ -55,6 +55,7 @@ export default class SvgLab {
 			$mainLight = this.panel.find('#MainLight'),
 			$paper = this.panel.find('#Paper'),
 			$slider = this.panel.find('#slider'),
+			$pointer = this.panel.find('#pointer'),
 			$stage = this.panel.find('#stage'),
 			$MainMask = this.panel.find('#MainMask'),
 			$smile = this.panel.find('#smile'),
@@ -78,6 +79,7 @@ export default class SvgLab {
 				.set($LiquidInsideMask05, { attr: { y: 654 } })
 				.set($LiquidInsideMask06, { attr: { y: 651 } })
 				.set($LiquidInsideMask07, { attr: { y: 651 } })
+				.set($pointer, { rotation: -45, transformOrigin: 'bottom center' })
 				.set($paper, { y: '+55' })
 			;
 
@@ -108,6 +110,26 @@ export default class SvgLab {
 			;
 
 			return introTl;
+		}
+
+		function getPart2Tl() {
+			const part2Tl = new TimelineMax();
+
+			part2Tl
+				.add('part2-lights')
+				.to($pointer, 2, { rotation: 20 })
+				.staggerTo($part2light, 0.1, { fill: '#F8AD43' }, 0.1, 'part2-lights')
+				.staggerTo($part2light, 0.1, { fill: '#F8876E' }, 0.1, 'part2-lights+=0.5')
+				.staggerTo($part2light, 0.1, { fill: '#73C996' }, 0.1, 'part2-lights+=1')
+				.to($meterBcg, 0.2, { fill: '#5AB783' }, 'part2-lights+=1.2')
+				.to($meterStroke, 0.2, { fill: '#448962' }, 'part2-lights+=1.2')
+				.to($slider, 1.2, { x: '-=10px', ease: Power4.easeInOut }, 'part2-lights+=1.4')
+				.set($bulb1, { fill: '#5AB783' }, 'part2-lights+=2.6')
+				.set($bulb2, { fill: '#F8876E' }, 'part2-lights+=3')
+				.set($bulb3, { fill: '#F8AD43' }, 'part2-lights+=3.4')
+			;
+
+			return part2Tl;
 		}
 
 		function getIdeaTl() {
@@ -146,9 +168,10 @@ export default class SvgLab {
 				.add(clearStage())
 				.add(getIntroTl(), 'scene-intro')
 				.add(getIdeaTl(), 'scene-idea')
+				.add(getPart2Tl(), 'scene-part2')
 			;
 
-			mainTl.seek('scene-idea-=3');
+			mainTl.seek('scene-part2-=2');
 		}
 		init();
 
