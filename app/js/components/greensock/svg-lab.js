@@ -179,7 +179,41 @@ export default class SvgLab {
 				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
 				.set($h1, { y: '-=30px', text: 'fine tune easing' })
 
-				// 7, 8, 9
+				// dont't fill main flask yet
+				.to($Liquid07, 1.4, { strokeDashoffset: 0, ease: Power0.easeNone })
+
+				// fine tune easing
+				.to($Liquid08, 1.5, { strokeDashoffset: 0, ease: Power0.easeNone })
+				.add('flask06')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { y: '-=30px', text: 'master Greensock animations' })
+
+				.to($Liquid09, 0.6, { strokeDashoffset: 0, ease: Power0.easeNone })
+				.add('flask07')
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 0.2, { y: '+=10px', autoAlpha: 0, ease: Power4.easeInOut }, '+=2')
+				.set($h1, { scale: 0.9, y: '-=30px', text: 'and most importantly' })
+
+				// and most importantly + have fun
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut })
+				.to($h1, 2, { scale: 1, ease: RoughEase.ease.config({ template: Power0.easeNone, strength: 2, points: 60, taper: "none", randomize: true, clamp: false }) })
+				.to($h1, 0.3, { scale: 1.1, autoAlpha: 0, ease: Power0.easeNone })
+				.set($h1, { scale: 0.9, text: 'have some fun' })
+				.to($h1, 0.3, { scale: 1, autoAlpha: 1, ease: Power4.easeInOut }, '+=0.3')
+				.to($h1, 0.2, { autoAlpha: 0, ease: Power4.easeInOut }, '+=1')
+				.set($h1, { y: '-=30px', text: 'Want to learn Greensock from scratch?' })
+
+				.add('main-flask')
+
+				// fill in all the flasks
+				.to($LiquidInsideMask01, 6, { attr: { y: 415, ease: Power0.easeNone } }, 'flask01')
+				.to($LiquidInsideMask02, 8.4, { attr: { y: 451, ease: Power0.easeNone } }, 'flask02')
+				.to($LiquidInsideMask03, 5, { attr: { y: 452, ease: Power0.easeNone } }, 'flask03')
+				.to($LiquidInsideMask04, 4, { attr: { y: 602, ease: Power0.easeNone } }, 'flask04')
+				.to($LiquidInsideMask06, 1.7, { attr: { y: 608, ease: Power0.easeNone } }, 'flask06')
+				.to($LiquidInsideMask07, 1.7, { attr: { y: 608, ease: Power0.easeNone } }, 'flask07')
+				.to($LiquidInsideMask05, 3, { attr: { y: 563, ease: Power0.easeNone } }, 'main-flask')
 			;
 
 			return fillTubesTl;
@@ -225,7 +259,7 @@ export default class SvgLab {
 				.add(getFillTubesTl(), 'scene-tubes')
 			;
 
-			mainTl.seek('scene-tubes+=2');
+			mainTl.seek('scene-tubes+=17');
 		}
 		init();
 
