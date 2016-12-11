@@ -1,0 +1,165 @@
+.scrollmagic1 {
+	height: 100%;
+	margin: 0;
+	font: 16px/26px Helvetica, Helvetica Neue, Arial;
+	color: #222;
+
+	button,
+	input,
+	select,
+	textarea {
+		color: #222;
+	}
+
+	html {
+		font-size: 1em;
+		line-height: 1.4;
+	}
+
+	::-moz-selection {
+		background: #b3d4fc;
+		text-shadow: none;
+	}
+
+	::selection {
+		background: #b3d4fc;
+		text-shadow: none;
+	}
+
+	hr {
+		display: block;
+		height: 1px;
+		border: 0;
+		border-top: 1px solid #ccc;
+		margin: 1em 0;
+		padding: 0;
+	}
+
+	audio,
+	canvas,
+	img,
+	video {
+		vertical-align: middle;
+	}
+
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	.wrapper2 {
+		max-width: 350px;
+		margin: 0 10%;
+	}
+
+	h1 {
+		font-size: 2em;
+		margin-top: 0;
+		font-family: 'Roboto Condensed', Helvetica, Helvetica Neue, Arial, sans-serif;
+		font-weight: 700;
+	}
+
+	.wrapper2 {
+		width: 90%;
+		margin: 0 5%;
+	}
+	/* ==========================================================================
+	   Author's custom styles
+	   ========================================================================== */
+	/* =Main */
+	p {
+		font-size: 16px;
+	}
+
+	#slide01,
+	#slide03,
+	#slide05 {
+		background-color: #FFFFFF;
+	}
+
+	#slide00,
+	#slide02,
+	#slide04 {
+		background-color: #EDEDED;
+	}
+
+	.slide {
+		position: relative;
+		overflow: hidden;
+		height: 100vh;
+
+		.pin-wrapper {
+			width: 100%;
+			height: 100%;
+		}
+
+		.wrapper2 {
+			position: absolute;
+			top: 45%;
+			left: 50%;
+		}
+
+		.img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 700px;
+			height: 418px;
+			background: url("../images/scrollmagic/img_macbook01.png") no-repeat top left;
+			transform: translate(-80%, -40%);
+		}
+	}
+
+	#slide02 .img {
+		background-image: url("../images/scrollmagic/img_macbook02.png");
+	}
+
+	#slide03 .img {
+		background-image: url("../images/scrollmagic/img_macbook01.png");
+	}
+
+	#slide04 .img {
+		background-image: url("../images/scrollmagic/img_macbook02.png");
+	}
+
+	#slide02, #slide03, #slide04 {
+		.pin-wrapper {
+			transform: translateY(-100%);
+		}
+	}
+
+	.scrollmagic-pin-spacer {
+		position: absolute !important;
+		clip: rect(auto, auto, auto, auto);
+	}
+
+	/* =Footer */
+	.footer-container {
+		text-align: center;
+		font-size: 14px;
+		color: rgba(255, 255, 255, 0.5);
+		background-color: #06060d;
+
+		.wrapper2 {
+			width: 80%;
+			max-width: none;
+			margin: 0 10%;
+		}
+
+		h3 {
+			margin: 0;
+			padding: 20px 0;
+			font-weight: normal;
+		}
+
+		a {
+			color: rgba(255, 255, 255, 0.5);
+		}
+	}
+
+}
