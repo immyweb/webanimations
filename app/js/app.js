@@ -15,6 +15,7 @@ import p5Flower from './components/p5-flower-of-life/index';
 // import mojsBubbleLayout from './components/mojs-bubble-layout/index';
 import snapSvg from './components/snap-svg/index';
 import greensock1 from './components/greensock/index';
+import scrollmagic from './components/scrollmagic/index';
 
 // run scripts on DOM ready
 $(document).ready(() => {
@@ -33,4 +34,5 @@ $(document).ready(() => {
 	// mojsBubbleLayout.init();
 	snapSvg.init();
 	greensock1.init();
+	scrollmagic.init();
 });
