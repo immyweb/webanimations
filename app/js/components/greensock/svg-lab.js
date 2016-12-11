@@ -54,6 +54,7 @@ export default class SvgLab {
 			$printerLightsBottom = this.panel.find('#PrinterLIghtBottom, #PrinterLIghtBottom_1_'),
 			$mainLight = this.panel.find('#MainLight'),
 			$paper = this.panel.find('#Paper'),
+			$paperText = this.panel.find('#PaperText text'),
 			$slider = this.panel.find('#slider'),
 			$pointer = this.panel.find('#pointer'),
 			$stage = this.panel.find('#stage'),
@@ -250,6 +251,54 @@ export default class SvgLab {
 			return ideaTl;
 		}
 
+		function getFinalCTATl() {
+			const finalCTATl = new TimelineMax();
+
+			const lightBlinkTl = new TimelineMax({ repeat: -1, yoyo: true });
+
+			lightBlinkTl
+				.fromTo($printerLightsTop, 0.1, { fill: '#5AB783' }, { fill: '#F8AD43', immediateRender: false })
+				.fromTo($printerLightsBottom, 0.1, { fill: '#5AB783' }, { fill: '#F8AD43', immediateRender: false }, '+=0.2')
+				.fromTo($printerLightsTop, 0.1, { fill: '#F8AD43' }, { fill: '#F8876E', immediateRender: false }, '-=0.2')
+				.fromTo($printerLightsBottom, 0.1, { fill: '#F8AD43' }, { fill: '#F8876E', immediateRender: false }, '+=0.2')
+				.fromTo($printerLightsTop, 0.1, { fill: '#F8876E' }, { fill: '#5AB783', immediateRender: false }, '-=0.2')
+				.fromTo($printerLightsBottom, 0.1, { fill: '#F8876E' }, { fill: '#5AB783', immediateRender: false }, '+=0.2')
+			;
+
+			const hideAndSeekTl = new TimelineMax({ repeat: -1, repeatDelay: 5 });
+
+			hideAndSeekTl
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) })
+				.set($paperText, { text: 'YES SIR!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) }, '+=5')
+				.set($paperText, { text: 'SURE MAN!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) }, '+=5')
+				.set($paperText, { text: 'OK BABY!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) }, '+=5')
+				.set($paperText, { text: 'LETS GO!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) }, '+=5')
+				.set($paperText, { text: 'SIGN UP!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+				.to($paper, 0.6, { y: '+=55', ease: SteppedEase.config(10) }, '+=5')
+				.set($paperText, { text: 'START HERE!' })
+				.to($paper, 0.6, { y: '-=55', ease: SteppedEase.config(10) })
+			;
+
+			finalCTATl
+				.fromTo($MainBulb, 0.05, { fill: '#ffffff' }, { fill: '#F8AD43', repeat: 10, yoyo: true })
+				.to($h1, 0.3, { y: '+=20px', autoAlpha: 1, ease: Power4.easeInOut }, '+=0.3')
+				.add(lightBlinkTl, '2')
+				.to($paper, 3, { y: 0, ease: SteppedEase.config(10) }, '2.5')
+				.add(hideAndSeekTl, '5.6')
+			;
+
+			return finalCTATl;
+		}
+
 		function init() {
 			mainTl
 				.add(clearStage())
@@ -257,9 +306,10 @@ export default class SvgLab {
 				.add(getIdeaTl(), 'scene-idea')
 				.add(getPart2Tl(), 'scene-part2')
 				.add(getFillTubesTl(), 'scene-tubes')
+				.add(getFinalCTATl(), 'scene-final')
 			;
 
-			mainTl.seek('scene-tubes+=17');
+			// mainTl.seek('scene-final');
 		}
 		init();
 
