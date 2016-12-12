@@ -20,34 +20,19 @@ export default class ScrollingGrid {
     }
 
 	loadSVGs() {
-		const _this = this;
 
-		function imagesLoaded(shapesArray) {
-			_this.draw(shapesArray);
+		function loadSVG(url) {
+			return new Promise((resolve) => {
+				Snap.load(url, resolve);
+			});
 		}
 
-		function loadMulti(list) {
-			let image,
-				fragLoadedCount = 0,
-				listLength = list.length;
+		const myLoadList = [ loadSVG('../../images/svgs/design1.svg') ];
 
-			for ( let count = 0; count < listLength; count++ ) {
-				(function() {
-					let whichEl = count;
-					image = Snap.load(list[count], (f) => {
-						fragLoadedCount++;
-						shapesArray[whichEl] = f;
-						if ( fragLoadedCount >= listLength ) {
-							imagesLoaded(shapesArray);
-						}
-					});
-				})();
-			}
-		}
+		Promise.all(myLoadList).then((results) => {
+			this.draw(results);
+		});
 
-		const myLoadList = [ '../../images/svgs/design1.svg' ];
-
-		loadMulti(myLoadList);
 	}
 
 	draw(shapesArray) {
