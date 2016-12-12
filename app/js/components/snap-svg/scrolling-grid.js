@@ -9,7 +9,6 @@ const wW = window.innerWidth;
 const wH = window.innerHeight;
 
 const s = Snap('#scrollingGrid');
-let shapesArray = [];
 
 export default class ScrollingGrid {
 

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import SnapSvg from './raining-shapes';
 import ScrollingGrid from './scrolling-grid';
+import Phyllotaxis from './phyllotaxis';
 
 export default {
 
@@ -25,6 +26,17 @@ export default {
             $scrollingGrid.each((index, element) => {
                 scrollingGrid = new ScrollingGrid();
     			scrollingGrid.init( $(element) );
+            });
+        }
+
+		let $phyllotaxis = $('.js-phyllotaxis');
+        let phyllotaxis;
+
+        if ( $phyllotaxis && $phyllotaxis.length ) {
+
+            $phyllotaxis.each((index, element) => {
+                phyllotaxis = new Phyllotaxis();
+    			phyllotaxis.init( $(element) );
             });
         }
     }
