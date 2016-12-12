@@ -163,6 +163,8 @@
 					background: url('../images/scrollmagic/img_pen-body.png') no-repeat 50% 0;
 					background-size: 90px auto;
 					min-height: 580px;
+					z-index: 3;
+					position: relative;
 				}
 
 				&.part4 {
@@ -173,11 +175,21 @@
 				&.part5 {
 					background-position: 50% -1154px;
 					min-height: 150px;
+					z-index: 2;
+					position: relative;
 				}
 
 				&.part6 {
 					background-position: 50% -1437px;
 					min-height: 150px;
+				}
+
+				&.fade-in {
+					h2, p {
+						opacity: 1;
+						visibility: visible;
+						transform: translateX(0);
+					}
 				}
 			}
 
@@ -188,6 +200,11 @@
 				text-align: right;
 				vertical-align: top;
 				/*background-color: pink;*/
+				transition: all 0.3s ease-in;
+				opacity: 0;
+				visibility: hidden;
+
+				transform: translateX(-20px);
 			}
 
 			p {
@@ -197,6 +214,12 @@
 				float: left;
 				text-align: left;
 				/*background-color: yellow;*/
+				transition: all 0.3s ease-in;
+				opacity: 0;
+				visibility: hidden;
+
+				transform: translateX(20px);
+				transition-delay: 0.15s;
 			}
 
 		}
