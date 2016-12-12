@@ -1,7 +1,5 @@
-import $ from 'jquery';
-import { TweenMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
-import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+// import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 
 export default class CrossReveal {
 
@@ -16,39 +14,43 @@ export default class CrossReveal {
 			triggerElement: '#slide01',
 			triggerHook: 0,
 			duration: '100%'
-		})
+		});
+
+		pinScene01
 			.setPin('#slide01 .pin-wrapper')
-			.addTo(controller)
-		;
+			.addTo(controller);
 
 		// Scene 2 - pin the second section
 		const pinScene02 = new ScrollMagic.Scene({
 			triggerElement: '#slide01',
 			triggerHook: 0,
 			duration: '200%'
-		})
+		});
+
+		pinScene02
 			.setPin('#slide02 .pin-wrapper')
-			.addTo(controller)
-		;
+			.addTo(controller);
 
 		// Scene 3 - pin the fourth section
 		const pinScene03 = new ScrollMagic.Scene({
 			triggerElement: '#slide02',
 			triggerHook: 0,
 			duration: '200%'
-		})
+		});
+
+		pinScene03
 			.setPin('#slide03 .pin-wrapper')
-			.addTo(controller)
-		;
+			.addTo(controller);
 
 		// Scene 3 - pin the fourth section
 		const pinScene04 = new ScrollMagic.Scene({
 			triggerElement: '#slide03',
 			triggerHook: 0,
 			duration: '100%'
-		})
+		});
+
+		pinScene04
 			.setPin('#slide04 .pin-wrapper')
-			.addTo(controller)
-		;
+			.addTo(controller);
 	}
 }

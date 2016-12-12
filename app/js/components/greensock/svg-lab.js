@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { TimelineMax } from 'gsap';
 import 'gsap/src/uncompressed/plugins/TextPlugin.js';
 
@@ -47,12 +46,8 @@ export default class SvgLab {
 			$meterBcg = this.panel.find('#meterBcg'),
 			$meterStroke = this.panel.find('#meterStroke'),
 			$part2light = this.panel.find('#Part2 .light'),
-			$part2lightLeft = this.panel.find('#Part2 .light-left'),
-			$part2lightMid = this.panel.find('#Part2 .light-mid'),
-			$part2lightRight = this.panel.find('#Part2 .light-right'),
 			$printerLightsTop = this.panel.find('#PrinterLIghtTop, #PrinterLIghtTop_2_'),
 			$printerLightsBottom = this.panel.find('#PrinterLIghtBottom, #PrinterLIghtBottom_1_'),
-			$mainLight = this.panel.find('#MainLight'),
 			$paper = this.panel.find('#Paper'),
 			$paperText = this.panel.find('#PaperText text'),
 			$slider = this.panel.find('#slider'),
