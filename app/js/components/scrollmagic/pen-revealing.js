@@ -80,7 +80,7 @@ export default class PenRevealing {
 			triggerElement: '.part1',
 			triggerHook: 1,
 			duration: 557,
-			offset: 1250
+			offset: 1200
 		});
 
 		p4ToStartScene

@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import ScrollMagic1 from './cross-reveal';
 import ScrollMagic2 from './pen-revealing';
+import ScrollMagic3 from './one-pager';
 
 export default {
 
@@ -25,6 +26,17 @@ export default {
             $scrollmagic2.each((index, element) => {
                 scrollmagic2 = new ScrollMagic2();
     			scrollmagic2.init( $(element) );
+            });
+        }
+
+		let $scrollmagic3 = $('.js-onepager');
+        let scrollmagic3;
+
+        if ( $scrollmagic3 && $scrollmagic3.length ) {
+
+            $scrollmagic3.each((index, element) => {
+                scrollmagic3 = new ScrollMagic3();
+    			scrollmagic3.init( $(element) );
             });
         }
     }

@@ -1,0 +1,145 @@
+.onepager {
+	/* =Logo */
+	.logo {
+		position: absolute;
+		top: 30px;
+		left: 0;
+		right: 0;
+		text-align: center;
+		z-index: 10;
+
+		span {
+			display: block;
+			margin-top: 15px;
+			color: #9b9b9b;
+			font-style: italic;
+			font-size: 20px;
+		}
+	}
+
+	.logo-iht {
+		height: 69px;
+	}
+
+	/* =Slide Layout */
+	.slide {
+		height: 100vh;
+		text-align: center;
+	}
+
+	.primary,
+	.secondary {
+		height: 50%;
+		position: relative;
+		color: #fff;
+	}
+
+	.bcg {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: #FFF;
+		opacity: 1;
+	}
+
+	/* =Slide Styles */
+	.primary {
+		color: #FC866E;
+	}
+
+	.number {
+		font-size: 80px;
+		font-family: $font-heading1;
+		margin: 0;
+		line-height: 80px;
+		position: absolute;
+		bottom: 30px;
+		left: 0;
+		right: 0;
+	}
+
+	.title {
+		font-size: 40px;
+		line-height: 40px;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		top: 20px;
+
+		strong {
+			font-family: $font-heading1;
+		}
+
+		em {
+			font-family: $font-body;
+			font-style: normal;
+		}
+	}
+
+	.fade-txt {
+		display: block;
+	}
+
+	/* =Color Variations */
+	#slide01 {
+		background: linear-gradient(to right, #FC866E 0%, #FC866E 37%, #FD746C 100%);
+	}
+
+	@media only screen and (min-width: 480px) {
+		/* =Slide Styles */
+		.number {
+			font-size: 120px;
+			line-height: 120px;
+		}
+
+		#slide01 .number {
+			font-size: 140px;
+		}
+
+		.title {
+			font-size: 60px;
+			line-height: 60px;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {}
+
+	@media only screen and (min-width: 1025px) {
+		/* =Logo */
+		.logo-container {
+			width: 37%;
+			position: absolute;
+			left: 0;
+			top: 40%;
+			margin-top: -255px;
+		}
+
+		.logo {
+			right: 7%;
+			left: auto;
+		}
+
+		.logo-iht {
+			height: 124px;
+		}
+	}
+
+	@media only screen and (min-width: 1140px) {
+		/* =Slide Styles */
+		.number {
+			font-size: 200px;
+			line-height: 200px;
+		}
+
+		#slide01 .number {
+			font-size: 250px;
+		}
+
+		.title {
+			font-size: 100px;
+			line-height: 100px;
+		}
+	}
+}
