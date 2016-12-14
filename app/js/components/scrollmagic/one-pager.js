@@ -3,6 +3,7 @@ import { TweenMax } from 'gsap';
 import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
+import 'gsap/src/uncompressed/plugins/TextPlugin.js';
 
 export default class OnePager {
 
@@ -19,6 +20,7 @@ export default class OnePager {
 			$slideIn = $('.slide.active'),
 			$logo = $('.logo'),
 			$body = this.panel,
+			$main = $('#main'),
 			$slide = $('.slide'),
 			$nav = $('nav');
 
@@ -95,7 +97,7 @@ export default class OnePager {
 
 					// console.log(e.scrollDirection);
 
-					crossFade($slideOut, $slideIn, direction);
+					crossFade($slideOut, $slideIn, direction, slideIndex);
 				})
 				// .addIndicators({
 				// 	name: 'triggerDown',
@@ -139,8 +141,53 @@ export default class OnePager {
 
 		initPage();
 
-		function crossFade($slideOut, $slideIn, direction) {
+		function crossFade($slideOut, $slideIn, direction, slideIndex) {
 
+			let slideOutID = $slideOut.attr('id').substring(5, 7),
+				slideInID = $slideIn.attr('id').substring(5, 7),
+
+				// Slide out
+				$slideOutBcg = $slideOut.find('.bcg-color'),
+				$slideOutTitle = $slideOut.find('.title .fade-txt'),
+				$slideOutNumber = $slideOut.find('.number'),
+
+				// Slide in
+				$slideInBcg = $slideIn.find('.bcg-color'),
+				$slideInTitle = $slideIn.find('.title .fade-txt'),
+				$slideInNumber = $slideIn.find('.number'),
+				$slideInBcgWhite = $slideIn.find('.primary .bcg');
+
+			// Update nav
+			updateNav(slideOutID, slideInID);
+
+			// remove class active from all slides
+			TweenMax.set($slide, { className: '-=active' });
+
+			// add class active to current slide
+			TweenMax.set($('#slide' + slideIndex), { className: '+=active' });
+
+			// cross fade timeline
+			const crossFadeTl = new TimelineMax();
+
+			crossFadeTl
+				.set($slideIn, { autoAlpha: 1 })
+				.set([$slideInTitle, $slideInNumber, $slideInBcgWhite], { autoAlpha: 0 })
+				.to([$slideOutTitle, $slideOutNumber], 0.3, { autoAlpha: 0, ease: Linear.easeNone })
+				.set($main, { className: 'slide'+slideInID+'-active' })
+				.set($slideInNumber, { text: '0' })
+				.to($slideInNumber, 1.2, { autoAlpha: 1, ease: Linear.easeNone })
+			;
+
+			crossFadeTl.timeScale(0.5);
+		}
+
+		function updateNav(slideOutID, slideInID) {
+
+			// remove active class from all dots
+			$('.nav-items li').removeClass('active');
+
+			// Add active class to the new active slide
+			TweenMax.set($('.nav-items li.nav-item' + slideInID), { className: '+=active' });
 		}
 
 		// Animate slide IN
@@ -164,6 +211,8 @@ export default class OnePager {
 				.staggerFrom($slideInTitle, 0.3, { autoAlpha: 0, x: '-=60', ease: Power1.easeOut }, 0.1, 'fadeInLogo+=0.9')
 				.fromTo($nav, 0.3, { y: -15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: Power1.easeOut }, 'fadeInLogo+=1.5')
 			;
+
+			transitionInTl.timeScale(3);
 		}
 	}
 }
