@@ -11,7 +11,7 @@ let c = 20;
 
 let start = 0;
 
-let group;
+// let group;
 
 export default class ScrollingGrid {
 

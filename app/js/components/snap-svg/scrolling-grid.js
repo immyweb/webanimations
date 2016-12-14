@@ -1,5 +1,5 @@
 import Snap from 'snapsvg';
-import { TimelineMax } from 'gsap';
+// import { TimelineMax } from 'gsap';
 import 'gsap/src/uncompressed/plugins/TextPlugin.js';
 import colourJson from '../../../data/colours.json';
 import { random } from 'lodash';

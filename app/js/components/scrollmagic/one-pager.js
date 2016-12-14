@@ -13,7 +13,14 @@ export default class OnePager {
 			$navItems = $('.nav-items li').not('.active'),
 			$navTrigger = $('.nav-trigger'),
 			getTriggersDown = $('.slide-pos'),
-			triggersDown = [];
+			triggersDown = [],
+			getTriggersUp = $('.slide-pos-reverse'),
+			triggersUp = [],
+			$slideIn = $('.slide.active'),
+			$logo = $('.logo'),
+			$body = this.panel,
+			$slide = $('.slide'),
+			$nav = $('nav');
 
 
 		// Triggers on the way down
@@ -21,6 +28,14 @@ export default class OnePager {
 
 			let id = '#' + value.id;
 			triggersDown.push(id);
+
+		});
+
+		// Triggers on the way up
+		$.each(getTriggersUp, (key, value) => {
+
+			let id = '#' + value.id;
+			triggersUp.push(id);
 
 		});
 
@@ -62,7 +77,7 @@ export default class OnePager {
 			.addTo(controller);
 
 		// Scene 3 - trigger the right animation on the way DOWN
-		triggersDown.forEach((triggerDown, index) => {
+		triggersDown.forEach((triggerDown) => {
 
 			let triggerTransitionToNext = new ScrollMagic.Scene({
 				triggerElement: triggerDown,
@@ -71,15 +86,84 @@ export default class OnePager {
 
 			triggerTransitionToNext
 				.on('enter', (e) => {
-					console.log('crossfade to next ' +triggerDown);
+					// console.log('crossfade to next ' + triggerDown);
+
+					let $slideOut = $('.slide.active'),
+						slideIndex = triggerDown.substring(6, 8),
+						$slideIn = $('#slide' + slideIndex),
+						direction = e.scrollDirection;
+
+					// console.log(e.scrollDirection);
+
+					crossFade($slideOut, $slideIn, direction);
 				})
-				.addIndicators({
-					name: 'triggerDown',
-					indent: 520,
-					colorStart: 'yellow',
-					colorTrigger: 'yellow'
-				})
+				// .addIndicators({
+				// 	name: 'triggerDown',
+				// 	indent: 520,
+				// 	colorStart: 'yellow',
+				// 	colorTrigger: 'yellow'
+				// })
 				.addTo(controller);
 		});
+
+		// Scene 4 - trigger the right animation on the way DOWN
+		triggersUp.forEach((triggerUp) => {
+
+			let triggerTransitionToPrev = new ScrollMagic.Scene({
+				triggerElement: triggerUp,
+				triggerHook: 0.49
+			});
+
+			triggerTransitionToPrev
+				.on('leave', () => {
+					// console.log('crossfade to previous ' + triggerUp);
+				})
+				// .addIndicators({
+				// 	name: 'triggerUp',
+				// 	indent: 110,
+				// 	colorStart: 'black',
+				// 	colorTrigger: 'black'
+				// })
+				.addTo(controller);
+		});
+
+		function initPage() {
+			setTimeout(() => {
+				// Prevents body from flickering
+				TweenMax.set($body, { autoAlpha: 1 });
+
+				// Animate first slide in
+				animationIn($slideIn);
+			}, 500);
+		}
+
+		initPage();
+
+		function crossFade($slideOut, $slideIn, direction) {
+
+		}
+
+		// Animate slide IN
+		function animationIn($slideIn) {
+			let $slideInNumber = $slideIn.find('.number'),
+				$slideInTitle = $slideIn.find('.fade-txt'),
+				$primaryBcg = $slideIn.find('.primary .bcg'),
+				$whiteBcg = $slideIn.find('.bcg-white'),
+				transitionInTl = new TimelineMax();
+
+			transitionInTl
+				.set([$slide, $slideInNumber, $nav, $logo], { autoAlpha: 0 })
+				.set($slideIn, { autoAlpha: 1 })
+				.set($whiteBcg, { scaleX: 1 })
+				.set($primaryBcg, { scaleX: 0 })
+				.to($whiteBcg, 0.4, { scaleX: 0.63, ease: Power2.easeIn })
+				.to($primaryBcg, 0.4, { scaleX: 1, ease: Power2.easeIn, clearProps: 'all' })
+				.add('fadeInLogo')
+				.to($whiteBcg, 0.6, { scaleX: 0, ease: Power4.easeIn }, 'fadeInLogo+=0.3')
+				.to([$logo, $slideInNumber], 0.2, { autoAlpha: 1, ease: Linear.easeNone }, 'fadeInLogo-=0.2')
+				.staggerFrom($slideInTitle, 0.3, { autoAlpha: 0, x: '-=60', ease: Power1.easeOut }, 0.1, 'fadeInLogo+=0.9')
+				.fromTo($nav, 0.3, { y: -15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: Power1.easeOut }, 'fadeInLogo+=1.5')
+			;
+		}
 	}
 }
