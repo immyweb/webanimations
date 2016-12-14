@@ -9,6 +9,18 @@ export default class OnePager {
     init(element) {
         this.panel = element;
 
-		console.log(this.panel);
+		const controller = new ScrollMagic.Controller();
+
+		// Scene 1  - pin our main section
+		const pinScene01 = new ScrollMagic.Scene({
+			triggerElement: '#main',
+			triggerHook: 0,
+			duration: '900%'
+		});
+
+		pinScene01
+			.setPin('#main .pin-wrapper', { pushFollowers: false })
+			.addTo(controller)
+		;
 	}
 }
