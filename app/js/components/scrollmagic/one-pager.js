@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import { TweenMax } from 'gsap';
+import 'gsap/src/uncompressed/plugins/TextPlugin.js';
 import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
-import 'gsap/src/uncompressed/plugins/TextPlugin.js';
 
 export default class OnePager {
 
@@ -155,7 +155,8 @@ export default class OnePager {
 				$slideInBcg = $slideIn.find('.bcg-color'),
 				$slideInTitle = $slideIn.find('.title .fade-txt'),
 				$slideInNumber = $slideIn.find('.number'),
-				$slideInBcgWhite = $slideIn.find('.primary .bcg');
+				$slideInBcgWhite = $slideIn.find('.primary .bcg'),
+				slideInValue = $slideInNumber.attr('data-value');
 
 			// Update nav
 			updateNav(slideOutID, slideInID);
@@ -175,10 +176,34 @@ export default class OnePager {
 				.to([$slideOutTitle, $slideOutNumber], 0.3, { autoAlpha: 0, ease: Linear.easeNone })
 				.set($main, { className: 'slide'+slideInID+'-active' })
 				.set($slideInNumber, { text: '0' })
-				.to($slideInNumber, 1.2, { autoAlpha: 1, ease: Linear.easeNone })
+				// .to($slideInNumber, 1.2, { autoAlpha: 1, ease: Linear.easeNone })
+				.add('countingUp')
+				.fromTo($slideInBcg, 0.7, { autoAlpha: 0 }, { autoAlpha: 1, ease: Linear.easeNone })
+				.staggerFromTo($slideInTitle, 0.3, { autoAlpha: 0, x: '-=20' }, { autoAlpha: 1, x: 0, ease: Power1.easeOut }, 0.1, 'countingUp+=1.1')
 			;
 
-			crossFadeTl.timeScale(0.5);
+			// crossFadeTl.timeScale(0.5);
+
+			const countUpText = new TimelineMax({ paused: true });
+
+			// fade number in
+			countUpText.to($slideInNumber, 1.2, { autoAlpha: 1, ease: Linear.easeNone, onUpdate: updateValue, onUpdateParams: [ '{self}', slideInValue, $slideInNumber ] });
+
+			const countUpTl = new TimelineMax();
+			countUpTl.to(countUpText, 1, { progress: 1, ease: Power3.easeOut });
+
+			crossFadeTl.add(countUpTl, 'countingUp');
+		}
+
+		function updateValue(tl, slideInValue, $slideInNumber) {
+
+			let newValue = parseInt(tl.progress() * slideInValue);
+
+			if ( slideInValue === 100 ) {
+				$slideInNumber.text(newValue);
+			} else {
+				$slideInNumber.text(newValue + '%'); // Not good for the first slide
+			}
 		}
 
 		function updateNav(slideOutID, slideInID) {
