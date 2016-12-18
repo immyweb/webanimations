@@ -117,8 +117,16 @@ export default class OnePager {
 			});
 
 			triggerTransitionToPrev
-				.on('leave', () => {
+				.on('leave', (e) => {
 					// console.log('crossfade to previous ' + triggerUp);
+					let $slideOut = $('.slide.active'),
+						slideIndex = triggerUp.substring(6, 8),
+						$slideIn = $('#slide' + slideIndex),
+						direction = e.scrollDirection;
+
+					// console.log(e.scrollDirection);
+
+					crossFade($slideOut, $slideIn, direction, slideIndex);
 				})
 				// .addIndicators({
 				// 	name: 'triggerUp',
@@ -176,9 +184,9 @@ export default class OnePager {
 				.to([$slideOutTitle, $slideOutNumber], 0.3, { autoAlpha: 0, ease: Linear.easeNone })
 				.set($main, { className: 'slide'+slideInID+'-active' })
 				.set($slideInNumber, { text: '0' })
-				// .to($slideInNumber, 1.2, { autoAlpha: 1, ease: Linear.easeNone })
 				.add('countingUp')
-				.fromTo($slideInBcg, 0.7, { autoAlpha: 0 }, { autoAlpha: 1, ease: Linear.easeNone })
+				.fromTo($slideInBcg, 0.7, { autoAlpha: 0 }, { autoAlpha: 1, ease: Linear.easeNone, onComplete: hideOldSlide, onCompleteParams: [$slideOut] })
+				.to($slideInBcgWhite, 0.3, { autoAlpha: 1, ease: Linear.easeNone }, 'countingUp-=0.4')
 				.staggerFromTo($slideInTitle, 0.3, { autoAlpha: 0, x: '-=20' }, { autoAlpha: 1, x: 0, ease: Power1.easeOut }, 0.1, 'countingUp+=1.1')
 			;
 
@@ -193,6 +201,19 @@ export default class OnePager {
 			countUpTl.to(countUpText, 1, { progress: 1, ease: Power3.easeOut });
 
 			crossFadeTl.add(countUpTl, 'countingUp');
+
+			// Colored background tween up/down
+			if ( direction === 'FORWARD' ) {
+				let tweenBcg = TweenMax.fromTo($slideInBcg, 0.7, { autoAlpha: 0 }, { autoAlpha: 1, ease: Linear.easeNone, onComplete: hideOldSlide, onCompleteParams: [$slideOut] });
+			} else {
+				let tweenBcg = TweenMax.to($slideOutBcg, 0.7, { autoAlpha: 0, ease: Linear.easeNone, onComplete: hideOldSlide, onCompleteParams: [$slideOut] });
+			}
+
+			crossFadeTl.add(tweenBcg, 'countingUp-=0.3');
+		}
+
+		function hideOldSlide($slideOut) {
+			TweenMax.set($slideOut, { autoAlpha: 0 });
 		}
 
 		function updateValue(tl, slideInValue, $slideInNumber) {
@@ -217,6 +238,23 @@ export default class OnePager {
 
 		// Animate slide IN
 		function animationIn($slideIn) {
+
+			// SVG Logo animation
+			let introAnimationTl = new TimelineMax(),
+				$layer = $('.layer'),
+				$svgBase = $('#base'),
+				$svgPath = $('#base path'),
+				$awwwLogo = $('.awww-logo');
+
+			introAnimationTl
+				.from($svgPath, 1.2, { drawSVG: '0%', ease: Power2.easeInOut })
+				.from($awwwLogo, 0.3, { autoAlpha: 0}, '-=0.3')
+				.from([$svgBase, $awwwLogo], 1.2, { y: -115, ease: Power4.easeInOut }, "+=0.2")
+				.add('fade')
+				.staggerFrom($layer, 2, { autoAlpha: 0, y: -10, ease: Power4.easeInOut }, 0.2, 'fade-=1.5')
+			;
+
+
 			let $slideInNumber = $slideIn.find('.number'),
 				$slideInTitle = $slideIn.find('.fade-txt'),
 				$primaryBcg = $slideIn.find('.primary .bcg'),
@@ -234,6 +272,7 @@ export default class OnePager {
 				.to($whiteBcg, 0.6, { scaleX: 0, ease: Power4.easeIn }, 'fadeInLogo+=0.3')
 				.to([$logo, $slideInNumber], 0.2, { autoAlpha: 1, ease: Linear.easeNone }, 'fadeInLogo-=0.2')
 				.staggerFrom($slideInTitle, 0.3, { autoAlpha: 0, x: '-=60', ease: Power1.easeOut }, 0.1, 'fadeInLogo+=0.9')
+				.add(introAnimationTl, 'fadeInLogo+=1')
 				.fromTo($nav, 0.3, { y: -15, autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: Power1.easeOut }, 'fadeInLogo+=1.5')
 			;
 
