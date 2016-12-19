@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import { TweenMax } from 'gsap';
 import 'gsap/src/uncompressed/plugins/TextPlugin.js';
+import 'gsap/src/uncompressed/plugins/ScrollToPlugin.js';
 import ScrollMagic from 'scrollmagic';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 import 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators';
@@ -14,6 +15,7 @@ export default class OnePager {
 		let controller,
 			$navItems = $('.nav-items li').not('.active'),
 			$navTrigger = $('.nav-trigger'),
+			$navItemLink = $('.nav-items a'),
 			getTriggersDown = $('.slide-pos'),
 			triggersDown = [],
 			getTriggersUp = $('.slide-pos-reverse'),
@@ -292,7 +294,7 @@ export default class OnePager {
 
 				let newValue = parseInt(tl.progress() * slideInValue);
 
-				if ( slideInValue === 100 ) {
+				if ( slideInValue === '100' ) {
 					$slideInNumber.text(newValue);
 				} else {
 					$slideInNumber.text(newValue + '%'); // Not good for the first slide
@@ -349,6 +351,20 @@ export default class OnePager {
 
 				transitionInTl.timeScale(3);
 			}
+
+			$navItemLink.on('click', (e) => {
+
+				// scroll to right position
+				let slideInIndex = $(e.target).attr('href').substring(6,8),
+					offset = $('div#slide' + slideInIndex + '-pos').offset().top,
+					wH = window.innerHeight,
+					finalOffset = offset - (wH * 0.4);
+
+				// Move window to correct position
+				TweenMax.to(window, 0.7, { scrollTo: finalOffset, ease: Power4.easeOut });
+
+				e.preventDefault();
+			});
 
 		}
 	}
